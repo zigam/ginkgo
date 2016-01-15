@@ -234,6 +234,6 @@ function load_names(callback) {
         console.log('Loaded ' + Object.keys(names).length + ' names');
         callback(names);
     });
-    req.open('GET', '../data/generated/names.json');
+    req.open('GET', 'data/generated/names.json');
     req.send();
 }
