@@ -113,7 +113,7 @@ function load_data() {
             window.setTimeout(dropdown_change, 0);
         });
     });
-    req.open('GET', '../data/generated/countries.json');
+    req.open('GET', 'data/generated/countries.json');
     req.send();
 }
 
