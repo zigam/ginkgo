@@ -1,0 +1,49 @@
+<html>
+<head>
+<script src="../javascript/levenshtein.js"></script>
+<script src="../javascript/analyze_names.js"></script>
+<script src="../javascript/main.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+Gender: <select name="gender" id="gender">
+    <option value="both">both</option>
+    <option value="female">female</option>
+    <option>male</option>
+</select>
+
+<br />
+
+Countries: <select name="country_1" class="country_dropdown">
+    <option>(Select country)</option>
+</select>
+<select name="country_2" class="country_dropdown">
+    <option value="">(Select country)</option>
+</select>
+<select name="country_3" class="country_dropdown">
+    <option value="">(Select country)</option>
+</select>
+<select name="country_4" class="country_dropdown">
+    <option value="">(Select country)</option>
+</select>
+
+<div id="matches_female" style="display: none">
+<h1>Girls:</h1>
+<h2>Exact matches:</h2>
+<div id="matches_female_exact"></div>
+<h2>Phonetic matches:</h2>
+<div id="matches_female_phonetic"></div>
+</div>
+
+<div id="matches_male" style="display: none">
+<h1>Boys:</h1>
+<h2>Exact matches:</h2>
+<div id="matches_male_exact"></div>
+<h2>Phonetic matches:</h2>
+<div id="matches_male_phonetic"></div>
+</div>
+
+<body onload="load_data();">
+</body>
+
+</html>
