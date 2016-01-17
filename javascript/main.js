@@ -70,11 +70,15 @@ function dropdown_change() {
 }
 
 function render_matches(countries, gender) {
+    document.getElementById('progress').style.display = '';
+    document.getElementById('matches_female').style.display = 'none';
+    document.getElementById('matches_male').style.display = 'none';
     window.setTimeout(function() {
         var matches = find_phonetic_matches(names, countries, gender);
+        document.getElementById('progress').style.display = 'none';
         render_results(matches.exact, gender, true);
         render_results(matches.phonetic, gender, false);
-    }, 0);
+    }, 10);
 }
 
 function render_results(results, gender, exact) {
@@ -92,7 +96,8 @@ function render_results(results, gender, exact) {
             continue;
         }
         if (!first) {
-            var delimiter = exact ? document.createTextNode(', ') : document.createElement('br');
+            var delimiter = exact ? document.createTextNode(', ') :
+                                    document.createElement('br');
             inner_div.appendChild(delimiter);
         }
         first = false;
