@@ -1,94 +1,122 @@
-// http://ipinfo.io
-
-var MIN_DISPLAY_RANK = 10;
+var MIN_DISPLAY_RANK = 0;
+var CARET = ' <span class="caret" />';
 var names = {};
-
-function get_dropdowns() {
-    return document.getElementsByClassName('country_dropdown');
-}
+var all_countries = {};
 
 function populate_dropdowns(countries) {
-    var i;
-
-    cached_selection = JSON.parse(
-            window.localStorage.getItem('selected_countries') || '[]');
-
-    var dropdowns = get_dropdowns();
-    for (i = 0; i < dropdowns.length; i++) {
-        dropdowns[i].addEventListener('change', dropdown_change);
-        var j = 0;
-        for (var code in countries) {
-            var opt = document.createElement('option');
-            opt.appendChild(document.createTextNode(countries[code]));
-            opt.value = code;
-            dropdowns[i].appendChild(opt);
-            if (code === cached_selection[i]) {
-                opt.selected = true;
-            }
-        }
+    for (var code in countries) {
+        var li = $('<li><a>' + countries[code] + '</a></li>');
+        li.find('a').data('value', code);
+        $('.country-dropdown').append(li);
     }
+
+    var cached_selection = JSON.parse(
+            window.localStorage.getItem('selected_countries') || '[]');
+    $('.country-dropdown').each(function(i, elt) {
+        if (cached_selection.length > i) {
+            var code = cached_selection[i];
+            var button = $('#' + $(elt).attr('aria-labelledby'));
+            button.html(countries[code] + CARET);
+            button.data('value', code);
+        }
+    });
 
     cached_selection = window.localStorage.getItem('selected_gender');
-    var gender_select = document.getElementById('gender');
-    for (i = 0; i < gender_select.options.length; i++) {
-        if (gender_select.options[i].value === cached_selection) {
-            gender_select.options[i].selected = true;
-        }
+    if (!cached_selection) {
+        cached_selection = 'both';
     }
-    document.getElementById('gender').addEventListener('change', dropdown_change);
+    var gender_button = $('#' + $('.gender-dropdown').attr('aria-labelledby'));
+    $('.gender-dropdown li a').each(function(i, elt) {
+        var gender = $(elt).data('value');
+        if (gender === cached_selection) {
+            gender_button.html($(elt).text() + CARET);
+            gender_button.data('value', gender);
+        }
+    });
+
+    $(".dropdown li a").click(function(){
+        dropdown_change($(this).parents('.dropdown'), $(this));
+    });
 }
 
-function dropdown_change() {
-    var dropdowns = get_dropdowns();
-    var countries = [];
-    for (var i = 0; i < dropdowns.length; i++) {
-        var d = dropdowns[i];
-        var country = d.options[d.selectedIndex].value;
-        if (!country) {
-            continue;
-        }
-        if (countries.indexOf(country) == -1) {
-            countries.push(country);
-        }
+function dropdown_change(dropdown, selected_link) {
+    if (selected_link) {
+        var text = selected_link.text();
+        var value = selected_link.data('value');
+        var button = dropdown.find('.dropdown-toggle');
+        button.html(text + CARET);
+        button.data('value', value);
     }
+
+    var countries = [];
+    $('.country-dropdown').each(function(i, elt) {
+        var button = $('#' + $(elt).attr('aria-labelledby'));
+        if (button.data('value')) {
+          countries.push(button.data('value'));
+        }
+    });
     window.localStorage.setItem('selected_countries', JSON.stringify(countries));
 
-    if (countries.length < 2) {
-        return;
+    var gender_button = $('#' + $('.gender-dropdown').attr('aria-labelledby'));
+    var gender = gender_button.data('value');
+    if (gender) {
+        window.localStorage.setItem('selected_gender', gender);
     }
-
-    var gender_select = document.getElementById('gender');
-    var gender = gender_select.options[gender_select.selectedIndex].value;
-    window.localStorage.setItem('selected_gender', gender);
 
     if (gender == 'both') {
         render_matches(countries, 'female');
         render_matches(countries, 'male');
-    } else {
+    } else if (gender == 'male' || gender == 'female') {
         render_matches(countries, gender);
     }
 }
 
 function render_matches(countries, gender) {
-    document.getElementById('progress').style.display = '';
-    document.getElementById('matches_female').style.display = 'none';
-    document.getElementById('matches_male').style.display = 'none';
+    $('#progress').show();
+    $('#matches_female').hide();
+    $('#matches_male').hide();
     window.setTimeout(function() {
         var matches = find_phonetic_matches(names, countries, gender);
-        document.getElementById('progress').style.display = 'none';
-        render_results(matches.exact, gender, true);
-        render_results(matches.phonetic, gender, false);
+        $('#progress').hide();
+        render_results(matches.exact, gender, countries, true);
+        render_results(matches.phonetic, gender, countries, false);
     }, 10);
 }
 
-function render_results(results, gender, exact) {
+function generate_tooltip(name, gender, countries) {
+    var tooltips = [];
+    var countries_set = {};
+    for (var i = 0; i < countries.length; i++) {
+        countries_set[countries[i]] = true;
+    }
+    var name_variants = name.split(',');
+    for (var i = 0; i < name_variants.length; i++) {
+        var name = $.trim(name_variants[i]);
+        tooltips.push('<strong>' + name + '</strong>');
+        if (!name || !names[name]) {
+            continue;
+        }
+        var country_rankings = names[name][gender];
+        for (var c in country_rankings) {
+            if (c in countries_set) {
+                tooltips.push(all_countries[c] + ': ' + country_rankings[c]);
+            }
+        }
+        if (i < name_variants.length -1 ) {
+            tooltips.push('');
+        }
+    }
+    return tooltips.join('<br />');
+}
+
+function render_results(results, gender, countries, exact) {
     var div_id = 'matches_' + gender;
-    var div = document.getElementById(div_id);
-    div.style.display = 'none';
+    var div = $('#' + div_id);
+    div.hide();
 
     var inner_div_id = div_id + '_' + (exact ? 'exact' : 'phonetic');
-    var inner_div = document.getElementById(inner_div_id);
-    inner_div.innerHTML = '';
+    var inner_div = $('#' + inner_div_id);
+    inner_div.html('');
 
     var first = true;
     for (var i = 0; i < results.length; i++) {
@@ -96,29 +124,47 @@ function render_results(results, gender, exact) {
             continue;
         }
         if (!first) {
-            var delimiter = exact ? document.createTextNode(', ') :
-                                    document.createElement('br');
-            inner_div.appendChild(delimiter);
+            var delimiter = exact ? document.createTextNode(', ') : $('<br />');
+            inner_div.append(delimiter);
         }
         first = false;
-        inner_div.appendChild(document.createTextNode(results[i][0]));
+        var span = $('<span data-toggle="tooltip" data-placement="top" data-html="true">' +
+                     results[i][0] + '</span>');
+        span.attr('title', generate_tooltip(results[i][0], gender, countries));
+        inner_div.append(span);
     }
-
-    div.style.display = '';
+    div.show();
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 }
 
 function load_data() {
-    var req = new XMLHttpRequest();
-    req.addEventListener('load', function(e) {
-        countries = JSON.parse(req.responseText);
-        console.log('Loaded ' + Object.keys(countries).length + ' country data');
-        populate_dropdowns(countries);
+    $.getJSON('data/generated/countries.json', function(countries) {
+        console.log('Loaded data for ' + Object.keys(countries).length + ' countries');
+        all_countries = countries;
         load_names(function(n) {
             names = n;
             window.setTimeout(dropdown_change, 0);
+
+            var selected_countries = JSON.parse(
+                window.localStorage.getItem('selected_countries') || '[]');
+            if (!selected_countries.length) {
+                $.getJSON('http://ipinfo.io', function(data) {
+                    if (data && data.country && data.country != 'US') {
+                        code = data.country.toLowerCase();
+                        selected_countries = ['us', code];
+                    } else {
+                        selected_countries = ['us', 'si'];
+                    }
+                    window.localStorage.setItem(
+                        'selected_countries', JSON.stringify(selected_countries));
+                    populate_dropdowns(countries);
+                });
+            } else {
+                populate_dropdowns(countries);
+            }
         });
     });
-    req.open('GET', 'data/generated/countries.json');
-    req.send();
 }
 

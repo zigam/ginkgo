@@ -1,0 +1,15 @@
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    min-width: 12em;
+}
+
+.dropdown a:hover {
+    cursor: pointer;
+}
+
+.tooltip-inner {
+    text-align: left;
+}

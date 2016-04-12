@@ -103,7 +103,7 @@ function find_phonetic_matches(names, countries, gender) {
     for (i = 0; i < all_candidates.length; i++) {
         c = all_candidates[i];
         key = JSON.stringify(c);
-        if (candidate_rank(c, MIN_RANK) >= MIN_RANK) {// && !(key in candidate_set)) {
+        if (candidate_rank(c, MIN_RANK) >= MIN_RANK) {
             filtered_candidates.push(c);
             candidate_set[key] = true;
         }
@@ -166,7 +166,15 @@ function find_phonetic_matches(names, countries, gender) {
 }
 
 function candidate_sort(c1, c2) {
-    return candidate_rank(c2) - candidate_rank(c1);
+    r1 = candidate_rank(c1);
+    r2 = candidate_rank(c2);
+    if (r1 == r2) {
+        // Sort by name if the rank is the same.
+        return c1[0][1].localeCompare(c2[0][1]);
+    } else {
+        // Sort by rank.
+        return r2 - r1;
+    }
 }
 
 function candidate_rank(candidate, filter_rank) {

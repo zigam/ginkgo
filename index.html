@@ -1,53 +1,106 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="javascript/levenshtein.js"></script>
 <script src="javascript/analyze_names.js"></script>
 <script src="javascript/main.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
-Gender: <select name="gender" id="gender">
-    <option value="both">both</option>
-    <option value="female">female</option>
-    <option>male</option>
-</select>
+<body onload="load_data();">
 
-<br />
+<div class="container">
 
-Countries: <select name="country_1" class="country_dropdown">
-    <option>(Select country)</option>
-</select>
-<select name="country_2" class="country_dropdown">
-    <option value="">(Select country)</option>
-</select>
-<select name="country_3" class="country_dropdown">
-    <option value="">(Select country)</option>
-</select>
-<select name="country_4" class="country_dropdown">
-    <option value="">(Select country)</option>
-</select>
+<div class="page-header">
+  <h1>International baby names</h1>
+  <p class="lead">Generates candidates for baby names with similar spelling or pronounciation across languages.</p>
+</div>
+
+<form>
+  <div class="form-group form-group-lg">
+    <label class="control-label" for="gender">Find names for:</label><br />
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" data-value="both" aria-haspopup="true" aria-expanded="true">
+        girls and boys
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu gender-dropdown" aria-labelledby="gender">
+        <li><a data-value='both'>girls and boys</a></li>
+        <li><a data-value='female'>girls</a></li>
+        <li><a data-value='male'>boys</a></li>
+      </ul>
+    </div>
+
+    <br /><br />
+    <label class="control-label" for="">that are popular in the following countries:</label><br />
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="country_0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        (Select country)
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu country-dropdown" aria-labelledby="country_0">
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="country_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        (Select country)
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu country-dropdown" aria-labelledby="country_1">
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="country_2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        (Select country)
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu country-dropdown" aria-labelledby="country_2">
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="country_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        (Select country)
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu country-dropdown" aria-labelledby="country_3">
+      </ul>
+    </div>
+  </div>
+</form>
 
 <div id="progress" style="display: none">
-<br />Loading...</br />
+<br /><h2>Generating candidates...</h2></br />
 </div>
 
 <div id="matches_female" style="display: none">
-<h1>Girls:</h1>
-<h2>Exact matches:</h2>
+<h2>Girls:</h3>
+<h3>Exact matches:</h3>
 <div id="matches_female_exact"></div>
-<h2>Phonetic matches:</h2>
+<h3>Phonetic matches:</h3>
 <div id="matches_female_phonetic"></div>
 </div>
 
 <div id="matches_male" style="display: none">
-<h1>Boys:</h1>
-<h2>Exact matches:</h2>
+<h2>Boys:</h2>
+<h3>Exact matches:</h3>
 <div id="matches_male_exact"></div>
-<h2>Phonetic matches:</h2>
+<h3>Phonetic matches:</h3>
 <div id="matches_male_phonetic"></div>
 </div>
 
-<body onload="load_data();">
+</div>
 </body>
-
 </html>

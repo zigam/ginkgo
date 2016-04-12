@@ -190,7 +190,7 @@ def parse_in_names():
     names = defaultdict(list)
     name_gender_pairs = set()
 
-    for line in open('../data/mibn/names-indian.tsv', 'rb'):
+    for line in open('../misc/data/mibn/names-indian.tsv', 'rb'):
         line = line.strip()
         if not line or line.startswith('#'):
             continue
@@ -239,6 +239,14 @@ def main():
 
     names_in = parse_in_names()
     merge_names(names, 'in', names_in)
+
+    # Remove Sri Lankan names that we haven't found in the Indian database.
+    for name, name_dict in names.iteritems():
+        for gender, country_rankings in name_dict.iteritems():
+            if ('lk' in country_rankings and 'in' in country_rankings and
+                country_rankings['lk'] == country_rankings['in'] and
+                name not in names_in):
+                del country_rankings['in']
 
     add_phonetic_encoding(names)
 

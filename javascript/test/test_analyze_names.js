@@ -3,7 +3,7 @@ load('../analyze_names.js');
 load('names.js');
 
 var console = {'log': function(msg) { debug(msg); }};
-var MIN_DISPLAY_RANK = 15;
+var MIN_DISPLAY_RANK = 1;
 
 debug('Total name count: ' + Object.keys(names).length);
 
@@ -13,7 +13,7 @@ function print_results_for_matches(results, exact) {
         if (results[i][1] < MIN_DISPLAY_RANK) {
             continue;
         }
-        list.push(results[i][0]);
+        list.push(results[i][0] + ': ' + results[1][1]);
     }
     debug((exact ? 'Exact' : 'Phonetic') + ' matches: ' + results.length + '\n' +
           list.join(exact ? ', ' : '\n'));
