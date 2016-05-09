@@ -161,7 +161,7 @@ function find_phonetic_matches(names, countries, gender) {
     return_matches(true);
     return_matches(false);
     time = Date.now() - time;
-    console.log('Took ' + time + 'ms');
+    //console.log('Took ' + time + 'ms');
     return ret;
 }
 

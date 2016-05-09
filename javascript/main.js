@@ -1,11 +1,16 @@
 var MIN_DISPLAY_RANK = 0;
 var CARET = ' <span class="caret" />';
+var DEFAULT_SELECTED_COUNTRIES = ['us', 'in', 'si']
 var names = {};
 var all_countries = {};
 
 function populate_dropdowns(countries) {
+    var li = $('<li class="dropdown-remove"><a>' + '(Remove country)' + '</a></li>');
+    var divider = $('<li class="dropdown-remove divider"></li>');
+    $('.country-dropdown').append(li, divider);
+
     for (var code in countries) {
-        var li = $('<li><a>' + countries[code] + '</a></li>');
+        li = $('<li><a>' + countries[code] + '</a></li>');
         li.find('a').data('value', code);
         $('.country-dropdown').append(li);
     }
@@ -18,6 +23,9 @@ function populate_dropdowns(countries) {
             var button = $('#' + $(elt).attr('aria-labelledby'));
             button.html(countries[code] + CARET);
             button.data('value', code);
+            $(elt).find('.dropdown-remove').show();
+        } else {
+            $(elt).find('.dropdown-remove').hide();
         }
     });
 
@@ -44,8 +52,15 @@ function dropdown_change(dropdown, selected_link) {
         var text = selected_link.text();
         var value = selected_link.data('value');
         var button = dropdown.find('.dropdown-toggle');
-        button.html(text + CARET);
-        button.data('value', value);
+        if (value) {
+            button.html(text + CARET);
+            button.data('value', value);
+            dropdown.find('.dropdown-remove').show();
+        } else {
+            button.html('(Select country)' + CARET);
+            button.removeData();
+            dropdown.find('.dropdown-remove').hide();
+        }
     }
 
     var countries = [];
@@ -75,6 +90,11 @@ function render_matches(countries, gender) {
     $('#progress').show();
     $('#matches_female').hide();
     $('#matches_male').hide();
+
+    if (!countries.length) {
+        $('#progress').hide();
+        return;
+    }
     window.setTimeout(function() {
         var matches = find_phonetic_matches(names, countries, gender);
         $('#progress').hide();
@@ -89,6 +109,7 @@ function generate_tooltip(name, gender, countries) {
     for (var i = 0; i < countries.length; i++) {
         countries_set[countries[i]] = true;
     }
+    tooltips.push('<strong>Name popularity:</strong>');
     var name_variants = name.split(',');
     for (var i = 0; i < name_variants.length; i++) {
         var name = $.trim(name_variants[i]);
@@ -150,21 +171,30 @@ function load_data() {
             var selected_countries = JSON.parse(
                 window.localStorage.getItem('selected_countries') || '[]');
             if (!selected_countries.length) {
-                $.getJSON('http://ipinfo.io', function(data) {
+                var jqxhr = $.getJSON('//ipinfo.io', function(data) {
                     if (data && data.country && data.country != 'US') {
                         code = data.country.toLowerCase();
                         selected_countries = ['us', code];
+                        store_and_render(selected_countries);
                     } else {
-                        selected_countries = ['us', 'si'];
+                        selected_countries = DEFAULT_SELECTED_COUNTRIES;
+                        store_and_render(selected_countries);
                     }
-                    window.localStorage.setItem(
-                        'selected_countries', JSON.stringify(selected_countries));
-                    populate_dropdowns(countries);
+                });
+                jqxhr.fail(function( jqxhr, textStatus, error ) {
+                    console.log('Request failed: ' + textStatus + ', ' + error);
+                    selected_countries = DEFAULT_SELECTED_COUNTRIES;
+                    store_and_render(selected_countries);
                 });
             } else {
-                populate_dropdowns(countries);
+                store_and_render(selected_countries);
             }
         });
     });
 }
 
+function store_and_render(selected_countries) {
+    window.localStorage.setItem('selected_countries', JSON.stringify(selected_countries));
+    populate_dropdowns(all_countries);
+    window.setTimeout(dropdown_change, 0);
+}
