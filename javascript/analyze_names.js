@@ -4,7 +4,7 @@ var MIN_RANK = 4;
 // names: master list of names. See //python/import_name_databases.py. This generates the
 // output in //data/generated/names.json.
 // countries: comma separated list countries we'd like to match. e.g. ['in', 'si']
-// gender: 'female', 'male', 'neutral'
+// gender: 'female', 'male', 'unisex'
 function find_phonetic_matches(names, countries, gender) {
     var time = Date.now();
     // Convert to set.
@@ -15,14 +15,23 @@ function find_phonetic_matches(names, countries, gender) {
         countries_set[countries[i]] = true;
     }
 
-    // Invert metaphone mapping. An example entry in here is of the form:
-    // ['SRP'] = {'Surabhi': {"female": {"in": 3, "us": 1}, "metaphone": ["SRP"]}}
+    // Invert metaphone mapping.
+    // Output: "FJT":{"Vigita":{"unisex":{"in":1,"lk":1}}}
     var metaphone_names = {};
+    var num_country_gender_found = 0;
     for (name in names) {
         name_dict = names[name];
-        if (!(gender in name_dict)) {
-            continue;
+        if (gender == 'unisex') {
+            process_unisex(name_dict, gender);
         }
+
+        var genders = ['male', 'female', 'unisex'];
+        for (i = 0; i < genders.length; i++) {
+            if (genders[i] != gender) {
+                delete name_dict[genders[i]];
+            }
+        }
+
         var country_found = false;
         for (g in name_dict) {
             if (g != gender) {
@@ -39,15 +48,20 @@ function find_phonetic_matches(names, countries, gender) {
         if (!country_found) {
             continue;
         }
+        num_country_gender_found++;
+        var name_dict_without_metaphone = JSON.parse(JSON.stringify(name_dict));
+        delete name_dict_without_metaphone['metaphone'];
+
         for (i = 0; i < name_dict.metaphone.length; i++) {
             metaphone = name_dict.metaphone[i];
             if (!(metaphone in metaphone_names)) {
                 metaphone_names[metaphone] = {};
             }
-            metaphone_names[metaphone][name] = name_dict;
+            metaphone_names[metaphone][name] = name_dict_without_metaphone;
         }
     }
-    //console.log('Total phonetic name count: ' + Object.keys(metaphone_names).length);
+    console.log('Total phonetic name count: ' + Object.keys(metaphone_names).length);
+    console.log('num_country_gender_found: ' + num_country_gender_found);
 
     // Find phonetic matches.
     //
@@ -109,6 +123,7 @@ function find_phonetic_matches(names, countries, gender) {
         generate_candidates(country_names, 0, [], metaphone_candidates);
         all_candidates.push.apply(all_candidates, metaphone_candidates);
     }
+    console.log('number of candidates: ' + all_candidates.length);
 
     // Filter candidates.
     var filtered_candidates = [];
@@ -125,6 +140,7 @@ function find_phonetic_matches(names, countries, gender) {
     candidate_set = undefined;
     all_candidates = filtered_candidates;
     all_candidates.sort(candidate_sort);
+    console.log('number of filtered candidates: ' + all_candidates.length);
 
     var returned_names = {};
     var returned_name_lists = {};
@@ -177,6 +193,40 @@ function find_phonetic_matches(names, countries, gender) {
     time = Date.now() - time;
     console.log('Took ' + time + 'ms');
     return ret;
+}
+
+// Update name_dict in place by adding an entry for 'unisex' gender.
+// Input: {"female":{"us":1},"male":{"us":1},"metaphone":["ATN"]}
+// Output: {"female":{"us":1},"male":{"us":1},"metaphone":["ATN"],"unisex":{"us":1}}
+function process_unisex(name_dict, gender) {
+    if (gender != 'unisex') return;
+
+    // Change the name_dict to only keep the names that show up as both
+    // male and female for the same country.
+    if (!('female' in name_dict) || !('male' in name_dict)) {
+        return;
+    }
+    var female_countries = Object.keys(name_dict['female']);
+    var male_countries = Object.keys(name_dict['male']);
+    var country_matches = new Set();
+    for (i = 0; i < female_countries.length; i++) {
+        var country_female = female_countries[i];
+        for (j = 0; j < male_countries.length; j++) {
+            var country_male = male_countries[i];
+            if (country_female == country_male) {
+                country_matches.add(country_female);
+            }
+        }
+    }
+    if (country_matches.size == 0) return;
+
+    var new_unisex_map = {}
+    for (c in name_dict['female']) {
+        if (!country_matches.has(c)) continue;
+        new_unisex_map[c] = Math.max(name_dict['female'][c], name_dict['male'][c]);
+    }
+    // Add in a value for unisex.
+    name_dict['unisex'] = new_unisex_map;
 }
 
 function candidate_sort(c1, c2) {
