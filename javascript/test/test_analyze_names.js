@@ -26,11 +26,11 @@ function print_results(results) {
 
 var countries = ['us', 'in', 'si'];
 var time = Date.now();
-print_results(find_phonetic_matches(names, countries, 'female'));
-print_results(find_phonetic_matches(names, countries, 'male'));
+print_results(find_phonetic_matches(JSON.parse(JSON.stringify(names)), countries, 'female'));
+print_results(find_phonetic_matches(JSON.parse(JSON.stringify(names)), countries, 'male'));
 
 console.log('------');
 countries = ['in'];
-print_results(find_phonetic_matches(names, countries, 'unisex'));
+print_results(find_phonetic_matches(JSON.parse(JSON.stringify(names)), countries, 'unisex'));
 time = Date.now() - time;
 debug('Took ' + time + 'ms');
