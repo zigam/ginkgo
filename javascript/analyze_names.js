@@ -20,7 +20,9 @@ function find_phonetic_matches(names, countries, gender) {
     var metaphone_names = {};
     var num_country_gender_found = 0;
     for (name in names) {
-        name_dict = names[name];
+        // We change the name_dict in place and we don't want to change the input 'names'
+        // so we clone it.
+        name_dict = JSON.parse(JSON.stringify(names[name]));
         if (gender == 'unisex') {
             process_unisex(name_dict, gender);
         }
