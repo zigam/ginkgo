@@ -1,5 +1,10 @@
+// TODO(surabhi): Why is the min_rank 4?
 var MIN_RANK = 4;
 
+// names: master list of names. See //python/import_name_databases.py. This generates the
+// output in //data/generated/names.json.
+// countries: comma separated list countries we'd like to match. e.g. ['in', 'si']
+// gender: 'female', 'male', 'neutral'
 function find_phonetic_matches(names, countries, gender) {
     var time = Date.now();
     // Convert to set.
@@ -10,7 +15,8 @@ function find_phonetic_matches(names, countries, gender) {
         countries_set[countries[i]] = true;
     }
 
-    // Invert metaphone mapping.
+    // Invert metaphone mapping. An example entry in here is of the form:
+    // ['SRP'] = {'Surabhi': {"female": {"in": 3, "us": 1}, "metaphone": ["SRP"]}}
     var metaphone_names = {};
     for (name in names) {
         name_dict = names[name];
@@ -43,6 +49,12 @@ function find_phonetic_matches(names, countries, gender) {
     }
     //console.log('Total phonetic name count: ' + Object.keys(metaphone_names).length);
 
+    // Find phonetic matches.
+    //
+    // Example entry here:
+    // ['FTRN', {"Vedran":{"male":{"ba":5,"hr":5,"si":2},"metaphone":["FTRN"]},
+    //           "Vidyaranya":{"male":{"in":3},"metaphone":["FTRN"]}}
+    // ]
     var phonetic_matches = [];
     for (metaphone in metaphone_names) {
         var name_map = metaphone_names[metaphone];
@@ -68,11 +80,12 @@ function find_phonetic_matches(names, countries, gender) {
         }
     }
 
+    // Generate candidates
     var all_candidates = [];
     for (i = 0; i < phonetic_matches.length; i++) {
         metaphone = phonetic_matches[i][0];
         var match = phonetic_matches[i][1];
-
+        // Data is in the format: {"in":[["Vanij",3]],"si":[["Vanja",5],["Vanjo",1]]}
         var country_names = {};
         for (j = 0; j < countries.length; j++) {
             c = countries[j];
@@ -103,7 +116,8 @@ function find_phonetic_matches(names, countries, gender) {
     for (i = 0; i < all_candidates.length; i++) {
         c = all_candidates[i];
         key = JSON.stringify(c);
-        if (candidate_rank(c, MIN_RANK) >= MIN_RANK) {// && !(key in candidate_set)) {
+        var can_rank = candidate_rank(c, MIN_RANK);
+        if (can_rank >= MIN_RANK) {// && !(key in candidate_set)) {
             filtered_candidates.push(c);
             candidate_set[key] = true;
         }
@@ -169,6 +183,20 @@ function candidate_sort(c1, c2) {
     return candidate_rank(c2) - candidate_rank(c1);
 }
 
+// candidate = [[in,Vijay,7],[si,Voja,1]]
+// filter_rank = 4
+// Output = 4
+//
+// candidate: [["in","Rati",3],["si","Rado",5]]
+// Output = 10
+//
+// Algorithm:
+// Find the sum of the ranks and calculate the minimum rank value.
+// To the rank, add (min_rank - 1) * 3.
+// To the new rank subtract (2 * the levenshtein distance between the candidates).
+//
+// Let's say we have two ranks: x, y
+// Output = (x+y) + (min(x,y)-1)*3 - (2 * lev_dist)
 function candidate_rank(candidate, filter_rank) {
     var i;
     var rank = 0;
@@ -179,16 +207,17 @@ function candidate_rank(candidate, filter_rank) {
         rank += c[2];
         min_rank = Math.min(min_rank, c[2]);
     }
-    var max_dist = 0;
-    var dist_sum = 0;
+    var rank_before = rank;
     rank += (min_rank - 1) * 3;
 
     if (filter_rank && rank < filter_rank) {
        return rank;
     }
 
+    var dist_sum = 0;
     for (i = 0; i < candidate.length; i++) {
         var c1 = candidate[i];
+        // TODO(surabhi): Can just change this to be j = i;
         for (var j = 0; j < candidate.length; j++) {
             var c2 = candidate[j];
             if (c1[1] != c2[1] && c1[1] > c2[1]) {
@@ -196,11 +225,30 @@ function candidate_rank(candidate, filter_rank) {
             }
         }
     }
-    return rank - (dist_sum * 2);
+    var to_return = rank - (dist_sum * 2);
+    return to_return;
 }
 
+// Recursive function for generating candidates of names. So far, everything is tied to the metaphone,
+// but we want to generate all possible combinations of names as candidates.
+// For a given metaphone, the first name associated with the first country gets
+// added. Then we add subsequent names based on the Levenshtein distance.
+// There can be names that are actually pretty far apart but map to the same metaphone.
+// We check and make sure the Levenshtein distance is <=2 to keep the name as a candidate.
+//
+// country_names = {"in":[["Vaijayi",3],["Vijay",7]],"si":[["Voja",1],["Vojo",1],["Vujo",1]]}
+// country_index = 0 (recursively increase this)
+// current_candidate = []
+// all_candidates = []
+//
+// Using this example, current_candidate has has a list of the potential options
+// for the current metaphone:
+// [["in","Vaijayi",3]], then [["in","Vijay",7]], then [["in","Vijay",7],["si","Voja",1]]
+//
+// To all_candidates we add: [["in","Vijay",7],["si","Voja",1]]
 function generate_candidates(
         country_names, country_index, current_candidate, all_candidates) {
+    // We've gone through all the countries and have generated a full combination of names for each country.
     if (country_index >= Object.keys(country_names).length) {
         all_candidates.push(current_candidate.slice(0));
         return;
@@ -211,8 +259,7 @@ function generate_candidates(
         var t = [c, name[0], name[1]];
         var ignore = false;
         for (var j = 0; j < current_candidate.length; j++) {
-            var cct = current_candidate[j];
-            if (levenshtein(cct[1], t[1]) > 2) {
+            if (levenshtein(current_candidate[j][1], name[0]) > 2) {
                 ignore = true;
                 break;
             }
@@ -223,6 +270,7 @@ function generate_candidates(
         current_candidate.push(t);
         generate_candidates(country_names, country_index + 1, current_candidate,
                             all_candidates);
+        // Remove the last element in the list.
         current_candidate.splice(current_candidate.length - 1, 1);
     }
 }
