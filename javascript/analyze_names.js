@@ -76,16 +76,11 @@ function find_phonetic_matches(names, countries, gender) {
         var curr_names = {};
         for (name in name_map) {
             name_dict = name_map[name];
-            for (g in name_dict) {
-                if (g != gender) {
-                    continue;
-                }
-                country_rankings = name_dict[g];
-                for (c in country_rankings) {
-                    if (c in countries_set) {
-                        curr_countries[c] = true;
-                        curr_names[name] = name_dict;
-                    }
+            country_rankings = name_dict[gender];
+            for (c in country_rankings) {
+                if (c in countries_set) {
+                    curr_countries[c] = true;
+                    curr_names[name] = name_dict;
                 }
             }
         }
@@ -106,15 +101,9 @@ function find_phonetic_matches(names, countries, gender) {
             country_names[c] = [];
             for (name in match) {
                 name_dict = match[name];
-                for (g in name_dict) {
-                    if (g != gender) {
-                        continue;
-                    }
-                    country_rankings = name_dict[g];
-                    if (c in country_rankings) {
-                        country_names[c].push([name, country_rankings[c]]);
-                        break;
-                    }
+                country_rankings = name_dict[gender];
+                if (c in country_rankings) {
+                    country_names[c].push([name, country_rankings[c]]);
                 }
             }
         }
