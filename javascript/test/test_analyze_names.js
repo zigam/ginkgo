@@ -13,7 +13,7 @@ function print_results_for_matches(results, exact) {
         if (results[i][1] < MIN_DISPLAY_RANK) {
             continue;
         }
-        list.push(results[i][0] + ': ' + results[1][1]);
+        list.push(results[i][0] + ': ' + results[i][1]);
     }
     debug((exact ? 'Exact' : 'Phonetic') + ' matches: ' + results.length + '\n' +
           list.join(exact ? ', ' : '\n'));
@@ -28,5 +28,9 @@ var countries = ['us', 'in', 'si'];
 var time = Date.now();
 print_results(find_phonetic_matches(names, countries, 'female'));
 print_results(find_phonetic_matches(names, countries, 'male'));
+
+console.log('------');
+countries = ['in'];
+print_results(find_phonetic_matches(names, countries, 'unisex'));
 time = Date.now() - time;
 debug('Took ' + time + 'ms');
