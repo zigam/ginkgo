@@ -31,7 +31,7 @@ function populate_dropdowns(countries) {
 
     cached_selection = window.localStorage.getItem('selected_gender');
     if (!cached_selection) {
-        cached_selection = 'both';
+        cached_selection = 'girls';
     }
     var gender_button = $('#' + $('.gender-dropdown').attr('aria-labelledby'));
     $('.gender-dropdown li a').each(function(i, elt) {
@@ -78,10 +78,7 @@ function dropdown_change(dropdown, selected_link) {
         window.localStorage.setItem('selected_gender', gender);
     }
 
-    if (gender == 'both') {
-        render_matches(countries, 'female');
-        render_matches(countries, 'male');
-    } else if (gender == 'male' || gender == 'female') {
+    if (gender == 'male' || gender == 'female' || gender == 'unisex') {
         render_matches(countries, gender);
     }
 }
@@ -90,6 +87,7 @@ function render_matches(countries, gender) {
     $('#progress').show();
     $('#matches_female').hide();
     $('#matches_male').hide();
+    $('#matches_unisex').hide();
 
     if (!countries.length) {
         $('#progress').hide();

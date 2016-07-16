@@ -30,14 +30,14 @@
     <label class="control-label" for="gender">Find names for:</label><br />
 
     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" data-value="both" aria-haspopup="true" aria-expanded="true">
-        girls and boys
+      <button class="btn btn-default dropdown-toggle" type="button" id="gender" data-toggle="dropdown" data-value="girls" aria-haspopup="true" aria-expanded="true">
+        girls
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu gender-dropdown" aria-labelledby="gender">
-        <li><a data-value='both'>girls and boys</a></li>
         <li><a data-value='female'>girls</a></li>
         <li><a data-value='male'>boys</a></li>
+        <li><a data-value='unisex'>unisex</a></li>
       </ul>
     </div>
 
@@ -100,6 +100,14 @@
 <div id="matches_male_exact"></div>
 <h3>Phonetic matches:</h3>
 <div id="matches_male_phonetic"></div>
+</div>
+
+<div id="matches_unisex" style="display: none">
+<h2>Unisex:</h2>
+<h3>Exact matches:</h3>
+<div id="matches_unisex_exact"></div>
+<h3>Phonetic matches:</h3>
+<div id="matches_unisex_phonetic"></div>
 </div>
 
 </div>

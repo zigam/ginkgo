@@ -113,7 +113,6 @@ function find_phonetic_matches(names, countries, gender) {
         generate_candidates(country_names, 0, [], metaphone_candidates);
         all_candidates.push.apply(all_candidates, metaphone_candidates);
     }
-    console.log('number of candidates: ' + all_candidates.length);
 
     // Filter candidates.
     var filtered_candidates = [];
@@ -212,7 +211,7 @@ function process_unisex(name_dict, gender) {
     var new_unisex_map = {}
     for (c in name_dict['female']) {
         if (!country_matches.has(c)) continue;
-        new_unisex_map[c] = Math.max(name_dict['female'][c], name_dict['male'][c]);
+        new_unisex_map[c] = (name_dict['female'][c] + name_dict['male'][c]) / 2;
     }
     // Add in a value for unisex.
     name_dict['unisex'] = new_unisex_map;
