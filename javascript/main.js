@@ -31,7 +31,7 @@ function populate_dropdowns(countries) {
 
     cached_selection = window.localStorage.getItem('selected_gender');
     if (!cached_selection) {
-        cached_selection = 'girls';
+        cached_selection = 'female';
     }
     var gender_button = $('#' + $('.gender-dropdown').attr('aria-labelledby'));
     $('.gender-dropdown li a').each(function(i, elt) {
