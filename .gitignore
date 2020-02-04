@@ -1,4 +1,10 @@
+bin/
+include/
+lib/
 misc/
+share/
+
+.Python
 
 # Compiled or temp files.
 *.exe

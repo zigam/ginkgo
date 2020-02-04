@@ -115,10 +115,28 @@ function generate_tooltip(name, gender, countries) {
         if (!name || !names[name]) {
             continue;
         }
-        var country_rankings = names[name][gender];
-        for (var c in country_rankings) {
-            if (c in countries_set) {
-                tooltips.push(all_countries[c] + ': ' + country_rankings[c]);
+        if (gender == 'unisex') {
+            var male_rankings = names[name]['male'];
+            var female_rankings = names[name]['female'];
+            var name_countries_set = {}
+            for (var c in male_rankings) {
+                name_countries_set[c] = true;
+            }
+            for (var c in female_rankings) {
+                name_countries_set[c] = true;
+            }
+            for (var c in name_countries_set) {
+                if (c in countries_set) {
+                    tooltips.push(all_countries[c] + ': ' + Math.max(male_rankings[c], female_rankings[c]));
+                }
+            }
+
+        } else {
+            var country_rankings = names[name][gender];
+            for (var c in country_rankings) {
+                if (c in countries_set) {
+                    tooltips.push(all_countries[c] + ': ' + country_rankings[c]);
+                }
             }
         }
         if (i < name_variants.length -1 ) {

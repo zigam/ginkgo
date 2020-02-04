@@ -53,7 +53,7 @@ COUNTRIES = [
     ('ge', 'Georgia'),
     ('kz/kg/tj/tm/uz', 'Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan'),
     ('tr', 'Turkey'),
-    ('AR', 'Arabia/Persia'), # Not an ISO-2 country.
+    ('AR', 'Arab countries'), # Not an ISO-2 country.
     ('il', 'Israel'),
     ('cn', 'China'),
     ('in/lk', 'India, Sri Lanka'),

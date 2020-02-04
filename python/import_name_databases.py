@@ -25,17 +25,21 @@ import codecs
 import json
 import math
 import os
+import re
 
 from collections import defaultdict, OrderedDict
 from metaphone import doublemetaphone
 from name_parser_maps import COUNTRIES, UNICODE_MAP
 
+import pycountry
+
+MIN_NAMES_PER_COUNTRY = 50
+
 def unicode_name(name):
     """Covert name to unicode."""
-    for code, patterns in UNICODE_MAP.iteritems():
+    for code, patterns in UNICODE_MAP.items():
         for pat in patterns:
-            pat = pat.decode('iso-8859-1')
-            name = name.replace(pat, unichr(code))
+            name = name.replace(pat, chr(code))
     assert name.find('<') == -1, name.encode('utf-8')
     assert name.find('>') == -1, name.encode('utf-8')
     return name
@@ -47,7 +51,7 @@ def extract_country_rankings(countries):
     for i, ranking in enumerate(countries):
         if ranking == ' ':
             continue
-        ranking = ord(('0' + ranking).decode('hex'))
+        ranking = ord(bytes.fromhex('0' + ranking).decode('ascii'))
         code = COUNTRIES[i][0]
         if '/' in code:
             codes = code.split('/')
@@ -59,20 +63,26 @@ def extract_country_rankings(countries):
 
 def format_gender(gender):
     """Canonicalize gender string."""
-    if gender in ('F', '1F', '?F'):
+    if gender in ('F', '1F', '?F', 'female'):
         return 'female'
-    elif gender in ('M', '1M', '?M'):
+    elif gender in ('M', '1M', '?M', 'male'):
         return 'male'
     elif gender == '?':
         return 'unisex'
     else:
         raise Exception('Invalid gender: ' + gender)
 
-def merge_names(names_global, country, names_country):
+def merge_names_for_country(names_global, country, names_country):
     """Merge list of names for country into global list."""
-    for name, values in names_country.iteritems():
+    for name, values in names_country.items():
         for (gender, ranking) in values:
             merge_name(names_global, name, gender, {country: ranking})
+
+def merge_names(names_global, names_to_merge):
+    """Merge list of names into global list."""
+    for name, name_dict in names_to_merge.items():
+        for gender, country_rankings in name_dict.items():
+            merge_name(names_global, name, gender, country_rankings)
 
 def merge_name(names, name, gender, rankings):
     """Merge name into global list."""
@@ -80,7 +90,7 @@ def merge_name(names, name, gender, rankings):
         names[name][gender] = rankings
         return
     global_rankings = names[name][gender]
-    for country, ranking in rankings.iteritems():
+    for country, ranking in rankings.items():
         global_rankings[country] = max(ranking, global_rankings.get(country, 0))
 
 def parse_global_names():
@@ -122,7 +132,7 @@ def parse_global_names():
         else:
             merge_name(names, name, gender, country_rankings)
 
-    print 'global names: ', len(names)
+    print('global names: ', len(names))
     return names
 
 def compute_ranking(count, population):
@@ -136,6 +146,38 @@ def compute_ranking(count, population):
     ranking = max(1, ranking)
     return ranking
 
+def parse_wikidata_names():
+    """Parse names from the Wikidata query service."""
+    names = defaultdict(dict)
+    population = defaultdict(int)
+    exclude_countries = {'us', 'si', 'in'}
+
+    for gender in 'male', 'female':
+        for line in open(f'../data/wikidata/wikidata-names-{gender}.tsv'):
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            fields = line.split('\t')
+            country, gender, name, count = fields
+            if not country or country in exclude_countries:
+                continue
+            count = int(count)
+            population[country] += count
+            name = name.strip().title()
+            if '.' in name or re.search('[0-9]', name) or count < 2:
+                continue
+            gender = format_gender(gender)
+            country_rankings = {country: count}
+            merge_name(names, name, gender, country_rankings)
+
+    print('wikidata names: ', len(names))
+
+    for name, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            for country, count in country_rankings.items():
+                country_rankings[country] = compute_ranking(count, population[country])
+    return names
+
 def parse_us_names():
     """Parse names from the SSA database."""
     names = defaultdict(int)
@@ -143,22 +185,23 @@ def parse_us_names():
     for root, _, files in os.walk('../data/ssa'):
         for ssa_f in files:
             if ssa_f.startswith('yob') and ssa_f.endswith('.txt'):
-                for line in open(os.path.join(root, ssa_f), 'rb'):
+                for line in open(os.path.join(root, ssa_f)):
                     line = line.strip()
                     if not line or line.startswith('#'):
                         continue
                     name, gender, count = line.split(',')
                     gender = 'female' if gender == 'F' else 'male'
-                    name = name.decode('utf-8')
                     count = int(count)
+                    if (count < 10):
+                        continue
                     population += count
                     names[(name, gender)] += count
 
     ret = defaultdict(list)
-    for (name, gender), count in names.iteritems():
+    for (name, gender), count in names.items():
         ranking = compute_ranking(count, population)
         ret[name].append((gender, ranking))
-    print 'us names: ', len(ret)
+    print('us names: ', len(ret))
     return ret
 
 def parse_si_names():
@@ -166,12 +209,11 @@ def parse_si_names():
     name_list = []
     population = 0
     for gender in ('female', 'male'):
-        for line in open('../data/si-stat/slovenia-%s-2015.tsv' % gender, 'rb'):
+        for line in open('../data/si-stat/slovenia-%s-2015.tsv' % gender):
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
             name, count = line.split('\t')
-            name = name.decode('utf-8')
             if count in ('-', '..'):
                 continue
             count = int(count)
@@ -182,7 +224,7 @@ def parse_si_names():
     for (name, gender, count) in name_list:
         ranking = compute_ranking(count, population)
         names[name].append((gender, ranking))
-    print 'si names: ', len(names)
+    print('si names: ', len(names))
     return names
 
 def parse_in_names():
@@ -190,24 +232,23 @@ def parse_in_names():
     names = defaultdict(list)
     name_gender_pairs = set()
 
-    for line in open('../misc/data/mibn/names-indian.tsv', 'rb'):
+    for line in open('../misc/data/mibn/names-indian.tsv'):
         line = line.strip()
         if not line or line.startswith('#'):
             continue
         name, gender, _ = line.split('\t')
         gender = 'female' if gender == 'F' else 'male'
-        name = name.decode('utf-8')
         if (name, gender) in name_gender_pairs:
             continue
         name_gender_pairs.add((name, gender))
         names[name].append((gender, 3))
 
-    print 'in names: ', len(names)
+    print('in names: ', len(names))
     return names
 
 def is_slovenian_name(name_dict):
     """Whether this is a Slovenian name."""
-    for _, country_rankings in name_dict.iteritems():
+    for _, country_rankings in name_dict.items():
         if 'si' in country_rankings.keys():
             return True
 
@@ -220,39 +261,15 @@ def trimmed_metaphone(name):
 
 def add_phonetic_encoding(names):
     """Adds adds the phonetic encoding to the name database."""
-    for name, name_dict in names.iteritems():
+    for name, name_dict in names.items():
         metaphone = trimmed_metaphone(name)
         if ('j' in name or 'J' in name) and is_slovenian_name(name_dict):
             si_name = name.replace('j', 'y').replace('J', 'Y')
             metaphone += trimmed_metaphone(si_name)
         names[name]['metaphone'] = metaphone
 
-def main():
-    """Main."""
-    names = parse_global_names()
-
-    names_us = parse_us_names()
-    merge_names(names, 'us', names_us)
-
-    names_si = parse_si_names()
-    merge_names(names, 'si', names_si)
-
-    names_in = parse_in_names()
-    merge_names(names, 'in', names_in)
-
-    # Remove Sri Lankan names that we haven't found in the Indian database.
-    for name, name_dict in names.iteritems():
-        for gender, country_rankings in name_dict.iteritems():
-            if ('lk' in country_rankings and 'in' in country_rankings and
-                country_rankings['lk'] == country_rankings['in'] and
-                name not in names_in):
-                del country_rankings['in']
-
-    add_phonetic_encoding(names)
-
-    print 'total names: ', len(names)
-
-    output = open('../data/generated/names.json', 'wb')
+def write_names(names):
+    output = open('../data/generated/names.json', 'w')
     json_out = json.dumps(names, indent=None, separators=(', ', ': '), sort_keys=True)
     json_out = json_out.replace('}}, ', '}},\n')
     json_out = json_out.replace(']}, ', ']},\n')
@@ -262,23 +279,79 @@ def main():
     output.write('\n')
     output.close()
 
-    output = open('../data/generated/countries.json', 'wb')
+def write_countries(names):
+    output = open('../data/generated/countries.json', 'w')
     f_countries = OrderedDict()
-    for code, country in COUNTRIES:
-        if code != code.upper():
-            if '/' in code:
-                codes = code.split('/')
-                countries = country.split(', ')
-                assert len(codes) == len(countries), '%r, %r' %(codes, countries)
-                for code, country in zip(codes, countries):
-                    f_countries[code] = country
-            else:
-                f_countries[code] = country
+
+    all_countries = set()
+    names_per_country_male, names_per_country_female = defaultdict(int), defaultdict(int)
+    for _, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            if gender == 'metaphone':
+                continue
+            for country, _ in country_rankings.items():
+                if not country:
+                    continue
+                all_countries.add(country)
+                if gender == 'male':
+                    names_per_country_male[country] += 1
+                elif gender == 'female':
+                    names_per_country_female[country] += 1
+
+    for code in all_countries:
+        if code == 'AR':
+            continue
+        country = pycountry.countries.get(alpha_2=code.upper())
+        if country:
+            f_countries[code] = country.name
+        else:
+            print('invalid country code:', code)
+
+    def filter_country(country):
+        code = country[0]
+        return (names_per_country_male[code] >= MIN_NAMES_PER_COUNTRY and
+                names_per_country_female[code] >= MIN_NAMES_PER_COUNTRY)
+
+    f_countries = OrderedDict(filter(filter_country, f_countries.items()))
     f_countries = OrderedDict(sorted(f_countries.items(), key=lambda x: x[1]))
+
+    print('total countries: ', len(f_countries))
     json_out = json.dumps(f_countries, indent=2, separators=(',', ': '))
     output.write(json_out)
     output.write('\n')
     output.close()
+
+
+def main():
+    """Main."""
+    names = parse_global_names()
+
+    names_wikidata = parse_wikidata_names()
+    merge_names(names, names_wikidata)
+
+    names_us = parse_us_names()
+    merge_names_for_country(names, 'us', names_us)
+
+    names_si = parse_si_names()
+    merge_names_for_country(names, 'si', names_si)
+
+    names_in = parse_in_names()
+    merge_names_for_country(names, 'in', names_in)
+
+    # Remove Sri Lankan names that we haven't found in the Indian database.
+    for name, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            if ('lk' in country_rankings and 'in' in country_rankings and
+                country_rankings['lk'] == country_rankings['in'] and
+                name not in names_in):
+                del country_rankings['in']
+
+    add_phonetic_encoding(names)
+
+    print('total names: ', len(names))
+
+    write_names(names)
+    write_countries(names)
 
 if __name__ == '__main__':
     main()

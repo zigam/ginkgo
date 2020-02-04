@@ -62,7 +62,7 @@ function find_phonetic_matches(names, countries, gender) {
         }
     }
     console.log('Total phonetic name count: ' + Object.keys(metaphone_names).length);
-    console.log('num_country_gender_found: ' + num_country_gender_found);
+    //console.log('num_country_gender_found: ' + num_country_gender_found);
 
     // Find phonetic matches.
     //
@@ -128,7 +128,7 @@ function find_phonetic_matches(names, countries, gender) {
     candidate_set = undefined;
     all_candidates = filtered_candidates;
     all_candidates.sort(candidate_sort);
-    console.log('number of filtered candidates: ' + all_candidates.length);
+    //console.log('number of filtered candidates: ' + all_candidates.length);
 
     var returned_names = {};
     var returned_name_lists = {};
