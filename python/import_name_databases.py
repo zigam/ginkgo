@@ -209,7 +209,7 @@ def parse_si_names():
     name_list = []
     population = 0
     for gender in ('female', 'male'):
-        for line in open('../data/si-stat/slovenia-%s-2015.tsv' % gender):
+        for line in open('../data/si-stat/slovenia-%s-2019.tsv' % gender):
             line = line.strip()
             if not line or line.startswith('#'):
                 continue

@@ -1,4 +1,4 @@
-Mary,F,18666
+Mary,F,18665
 Helen,F,8439
 Margaret,F,6976
 Ruth,F,6180
@@ -36,7 +36,7 @@ Virginia,F,2195
 Esther,F,2187
 Mabel,F,2096
 Lucille,F,2080
-Pearl,F,2076
+Pearl,F,2075
 Beatrice,F,1997
 Elsie,F,1983
 Viola,F,1964
@@ -64,10 +64,10 @@ Marion,F,1349
 Lena,F,1331
 Eleanor,F,1302
 Carrie,F,1239
-Stella,F,1215
+Stella,F,1216
 Vera,F,1204
 Blanche,F,1162
-Doris,F,1156
+Doris,F,1155
 Hattie,F,1137
 Betty,F,1128
 Leona,F,1118
@@ -129,7 +129,7 @@ Nettie,F,543
 Goldie,F,538
 Jane,F,531
 Katie,F,531
-Kathleen,F,526
+Kathleen,F,527
 Sophie,F,523
 May,F,515
 Barbara,F,514
@@ -146,7 +146,7 @@ Henrietta,F,468
 Naomi,F,458
 Madeline,F,457
 Essie,F,451
-Rebecca,F,450
+Rebecca,F,451
 Caroline,F,449
 Nina,F,449
 Ollie,F,447
@@ -1941,6 +1941,7 @@ Ezell,F,6
 Ezma,F,6
 Fanchon,F,6
 Felecia,F,6
+Fronnie,F,6
 Gayle,F,6
 Georga,F,6
 Gillie,F,6
@@ -2234,7 +2235,6 @@ Francesca,F,5
 Frederick,F,5
 Fredericka,F,5
 Fredrica,F,5
-Fronnie,F,5
 Gearldine,F,5
 Gemma,F,5
 Genella,F,5
@@ -2436,7 +2436,7 @@ John,M,9342
 William,M,7528
 James,M,7012
 George,M,4584
-Robert,M,4220
+Robert,M,4219
 Joseph,M,4162
 Charles,M,3929
 Frank,M,3146
@@ -2451,8 +2451,8 @@ Arthur,M,1601
 Harold,M,1542
 Paul,M,1478
 Clarence,M,1428
-Raymond,M,1382
 Fred,M,1381
+Raymond,M,1381
 Louis,M,1317
 Richard,M,1244
 Joe,M,1209
@@ -2461,7 +2461,7 @@ Roy,M,1097
 Jack,M,1086
 Howard,M,1078
 Carl,M,1074
-David,M,1017
+David,M,1016
 Ernest,M,1000
 Earl,M,999
 Samuel,M,960
@@ -2475,7 +2475,7 @@ Kenneth,M,692
 Anthony,M,690
 Elmer,M,689
 Eugene,M,689
-Michael,M,689
+Michael,M,688
 Donald,M,664
 Sam,M,644
 Theodore,M,643
@@ -2498,7 +2498,7 @@ Benjamin,M,480
 Edwin,M,477
 Oscar,M,476
 Chester,M,461
-Ray,M,447
+Ray,M,446
 Frederick,M,438
 Claude,M,428
 Bernard,M,414
@@ -2904,7 +2904,6 @@ Hardy,M,28
 Lyman,M,28
 Mario,M,28
 Milo,M,28
-Morton,M,28
 Sandy,M,28
 Sydney,M,28
 Bertram,M,27
@@ -2917,6 +2916,7 @@ Junior,M,27
 Linwood,M,27
 Mason,M,27
 Maxwell,M,27
+Morton,M,27
 Olen,M,27
 Patsy,M,27
 Rodney,M,27
@@ -3529,7 +3529,6 @@ Presley,M,8
 Raoul,M,8
 Raul,M,8
 Robbie,M,8
-Rodger,M,8
 Samie,M,8
 Sonny,M,8
 Susie,M,8
@@ -3627,6 +3626,7 @@ Pink,M,7
 Powell,M,7
 Rayburn,M,7
 Reece,M,7
+Rodger,M,7
 Roe,M,7
 Shannon,M,7
 Shellie,M,7

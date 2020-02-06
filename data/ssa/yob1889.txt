@@ -6,7 +6,7 @@ Emma,F,2884
 Minnie,F,2624
 Florence,F,2465
 Ethel,F,2463
-Bessie,F,2342
+Bessie,F,2343
 Clara,F,2319
 Bertha,F,2293
 Alice,F,2145
@@ -919,7 +919,6 @@ Dellie,F,9
 Donia,F,9
 Elta,F,9
 Ernest,F,9
-Evalena,F,9
 Fronia,F,9
 Gene,F,9
 Gretta,F,9
@@ -973,6 +972,7 @@ Emaline,F,8
 Enid,F,8
 Ether,F,8
 Euna,F,8
+Evalena,F,8
 Eveline,F,8
 Exie,F,8
 Filomena,F,8
@@ -1532,7 +1532,7 @@ Eugene,M,369
 Martin,M,367
 Ray,M,355
 Francis,M,346
-Lawrence,M,343
+Lawrence,M,342
 Harold,M,340
 Jim,M,328
 Leo,M,325
@@ -1545,7 +1545,7 @@ Otto,M,309
 Edwin,M,306
 Jacob,M,295
 Harrison,M,288
-Chester,M,275
+Chester,M,274
 Guy,M,271
 Ed,M,270
 Luther,M,270
@@ -1699,10 +1699,10 @@ Glen,M,58
 Dock,M,57
 Mose,M,57
 Barney,M,54
-Bob,M,52
 Edd,M,52
 Ervin,M,52
 Ike,M,52
+Bob,M,51
 Christian,M,51
 Clark,M,51
 Karl,M,50
@@ -2095,7 +2095,6 @@ Pablo,M,11
 Pierce,M,11
 Price,M,11
 Raphael,M,11
-Ronald,M,11
 Rose,M,11
 Rupert,M,11
 Russel,M,11
@@ -2140,6 +2139,7 @@ Ola,M,10
 Orange,M,10
 Pierre,M,10
 Quincy,M,10
+Ronald,M,10
 Rowland,M,10
 Seymour,M,10
 Sullivan,M,10

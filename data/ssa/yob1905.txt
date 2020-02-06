@@ -7,7 +7,7 @@ Elizabeth,F,4121
 Dorothy,F,3937
 Mildred,F,3758
 Marie,F,3643
-Alice,F,3611
+Alice,F,3610
 Florence,F,3478
 Ethel,F,3401
 Lillian,F,3185
@@ -46,10 +46,10 @@ Beatrice,F,1661
 Evelyn,F,1661
 Julia,F,1642
 Nellie,F,1626
-Laura,F,1567
+Laura,F,1566
 Lucille,F,1533
 Lillie,F,1481
-Ella,F,1437
+Ella,F,1438
 Virginia,F,1394
 Pauline,F,1381
 Mattie,F,1371
@@ -91,7 +91,7 @@ Marguerite,F,753
 Sadie,F,750
 Nora,F,742
 Susie,F,739
-Georgia,F,723
+Georgia,F,722
 Velma,F,722
 Marjorie,F,712
 Maude,F,709
@@ -121,7 +121,7 @@ Sylvia,F,528
 Loretta,F,527
 Eunice,F,525
 Lydia,F,518
-Estelle,F,509
+Estelle,F,510
 Genevieve,F,508
 Eula,F,502
 Rosie,F,500
@@ -142,7 +142,7 @@ Irma,F,428
 Iva,F,422
 Rachel,F,421
 Harriet,F,413
-Madeline,F,411
+Madeline,F,412
 Caroline,F,407
 Flossie,F,406
 Rebecca,F,402
@@ -162,7 +162,7 @@ Mollie,F,344
 Ola,F,344
 Victoria,F,343
 Erma,F,330
-Susan,F,321
+Susan,F,320
 Leola,F,319
 Alta,F,316
 Amanda,F,311
@@ -325,11 +325,11 @@ Corine,F,107
 Lucinda,F,107
 Helena,F,106
 Jimmie,F,106
-Linda,F,106
 Peggy,F,106
 Isabella,F,105
-Joan,F,105
+Linda,F,105
 Nona,F,105
+Joan,F,104
 Vesta,F,103
 Dolly,F,102
 Johanna,F,102
@@ -1125,7 +1125,6 @@ Isa,F,12
 Ivah,F,12
 Jerry,F,12
 Jodie,F,12
-Karen,F,12
 Lala,F,12
 Lallie,F,12
 Lassie,F,12
@@ -1210,6 +1209,7 @@ Inza,F,11
 Irena,F,11
 Isadora,F,11
 Justina,F,11
+Karen,F,11
 Kathern,F,11
 Kizzie,F,11
 Leanora,F,11
@@ -1893,7 +1893,6 @@ Roseanna,F,6
 Rosey,F,6
 Russell,F,6
 Saima,F,6
-Sandra,F,6
 Savanah,F,6
 Scottie,F,6
 Silva,F,6
@@ -2162,7 +2161,6 @@ Otila,F,5
 Otilia,F,5
 Otis,F,5
 Ottis,F,5
-Pamela,F,5
 Pascuala,F,5
 Paulyne,F,5
 Pearlee,F,5
@@ -2188,6 +2186,7 @@ Rufina,F,5
 Sabra,F,5
 Salina,F,5
 Sallye,F,5
+Sandra,F,5
 Seraphine,F,5
 Sevilla,F,5
 Siller,F,5
@@ -2234,7 +2233,7 @@ Zilphia,F,5
 Zoie,F,5
 Zulema,F,5
 John,M,8060
-William,M,6496
+William,M,6495
 James,M,6042
 George,M,4256
 Charles,M,3608
@@ -2254,9 +2253,9 @@ Fred,M,1284
 Paul,M,1262
 Harold,M,1258
 Raymond,M,1159
-Richard,M,1034
+Richard,M,1033
 Joe,M,1024
-Roy,M,1017
+Roy,M,1016
 Louis,M,981
 Carl,M,959
 Ralph,M,938
@@ -2277,7 +2276,7 @@ Elmer,M,602
 Eugene,M,593
 Alfred,M,591
 Floyd,M,523
-Michael,M,514
+Michael,M,513
 Leo,M,512
 Leonard,M,495
 Anthony,M,490
@@ -2336,7 +2335,7 @@ Marvin,M,215
 Horace,M,212
 Oliver,M,211
 Alexander,M,210
-Vernon,M,209
+Vernon,M,208
 Guy,M,203
 Maurice,M,202
 Hugh,M,200
@@ -2372,9 +2371,9 @@ Hubert,M,163
 Wallace,M,162
 Manuel,M,157
 Rufus,M,157
-Dan,M,153
+Dan,M,152
 Mack,M,151
-Irving,M,149
+Irving,M,148
 Johnie,M,148
 Bill,M,147
 Isaac,M,147
@@ -2464,10 +2463,10 @@ Carroll,M,72
 Delbert,M,72
 Larry,M,72
 Sherman,M,72
-Grady,M,71
 Louie,M,71
 Wilbert,M,71
 Barney,M,70
+Grady,M,70
 Aubrey,M,69
 Emanuel,M,69
 Harley,M,69

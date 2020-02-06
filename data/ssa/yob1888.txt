@@ -7,7 +7,7 @@ Minnie,F,2654
 Bertha,F,2450
 Florence,F,2444
 Ethel,F,2374
-Bessie,F,2279
+Bessie,F,2278
 Clara,F,2230
 Ida,F,2229
 Alice,F,2202
@@ -27,7 +27,7 @@ Pearl,F,1591
 Rose,F,1590
 Gertrude,F,1468
 Edith,F,1453
-Frances,F,1453
+Frances,F,1452
 Cora,F,1433
 Maude,F,1396
 Louise,F,1334
@@ -292,10 +292,10 @@ Emilie,F,65
 Gracie,F,65
 Oma,F,65
 Phoebe,F,65
-Fay,F,64
 Miriam,F,64
 Cleo,F,63
 Dovie,F,63
+Fay,F,63
 Isabella,F,63
 Letha,F,63
 Neva,F,63
@@ -473,7 +473,6 @@ Idella,F,28
 Ione,F,28
 Kitty,F,28
 Liza,F,28
-Paula,F,28
 Adda,F,27
 Celeste,F,27
 Eddie,F,27
@@ -481,6 +480,7 @@ Elda,F,27
 Eugenie,F,27
 Jewell,F,27
 Lovie,F,27
+Paula,F,27
 Susanna,F,27
 Vada,F,27
 Albina,F,26
@@ -767,7 +767,6 @@ Florine,F,12
 Gene,F,12
 Goldia,F,12
 Jesse,F,12
-Joyce,F,12
 Juliet,F,12
 Kizzie,F,12
 Lissie,F,12
@@ -814,6 +813,7 @@ Freida,F,11
 Georgina,F,11
 Hassie,F,11
 Icy,F,11
+Joyce,F,11
 Juana,F,11
 Leatha,F,11
 Lonnie,F,11
@@ -1472,14 +1472,14 @@ Zelpha,F,5
 Zeta,F,5
 Zilphia,F,5
 Zonie,F,5
-John,M,9248
+John,M,9247
 William,M,8705
 James,M,5562
 George,M,4912
 Charles,M,4591
 Frank,M,3459
 Joseph,M,2993
-Robert,M,2815
+Robert,M,2814
 Harry,M,2759
 Henry,M,2596
 Edward,M,2470
@@ -1487,7 +1487,7 @@ Thomas,M,2449
 Walter,M,2040
 Arthur,M,1710
 Fred,M,1665
-Albert,M,1568
+Albert,M,1569
 Clarence,M,1022
 Samuel,M,931
 Louis,M,884
@@ -1535,7 +1535,7 @@ Clyde,M,344
 Lawrence,M,343
 Harvey,M,334
 Ray,M,331
-Jack,M,330
+Jack,M,329
 Edgar,M,321
 Otto,M,312
 Floyd,M,302

@@ -290,9 +290,9 @@ Janet,F,119
 Corinne,F,118
 Lorene,F,116
 Dolores,F,114
-Merle,F,113
 Bess,F,112
 Harriett,F,112
+Merle,F,112
 Pearlie,F,112
 Elvira,F,110
 Lee,F,110
@@ -907,7 +907,6 @@ Fae,F,15
 Fleta,F,15
 Flonnie,F,15
 Helga,F,15
-Jacqueline,F,15
 Jennette,F,15
 Jossie,F,15
 Juliet,F,15
@@ -946,6 +945,7 @@ Florie,F,14
 Gena,F,14
 Gertha,F,14
 Henretta,F,14
+Jacqueline,F,14
 Larue,F,14
 Lavera,F,14
 Laverna,F,14
@@ -2085,7 +2085,7 @@ John,M,7608
 William,M,6311
 James,M,5480
 George,M,3961
-Charles,M,3212
+Charles,M,3213
 Joseph,M,3121
 Robert,M,3044
 Frank,M,2644
@@ -2122,7 +2122,7 @@ Leo,M,636
 Alfred,M,557
 Elmer,M,556
 Sam,M,552
-Andrew,M,551
+Andrew,M,550
 Lawrence,M,536
 Eugene,M,478
 Lee,M,477
@@ -2212,7 +2212,7 @@ Nathan,M,146
 Lonnie,M,145
 Bennie,M,144
 Gordon,M,142
-Jose,M,142
+Jose,M,141
 Dewey,M,140
 Earnest,M,140
 Alex,M,138
@@ -2299,8 +2299,8 @@ Sherman,M,70
 Merle,M,69
 Pete,M,69
 Roscoe,M,69
-Bruce,M,68
 Levi,M,68
+Bruce,M,67
 Monroe,M,67
 Ross,M,67
 Bob,M,66

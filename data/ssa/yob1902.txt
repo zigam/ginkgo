@@ -5,7 +5,7 @@ Margaret,F,5011
 Ruth,F,4384
 Elizabeth,F,3694
 Florence,F,3509
-Marie,F,3423
+Marie,F,3424
 Ethel,F,3295
 Alice,F,3135
 Lillian,F,3063
@@ -217,8 +217,8 @@ Zelma,F,189
 Margie,F,187
 Gussie,F,185
 Millie,F,185
-Bonnie,F,183
 Faye,F,183
+Bonnie,F,182
 Cecile,F,181
 Fay,F,181
 Carolyn,F,179
@@ -694,7 +694,6 @@ Eldora,F,24
 Eulalia,F,24
 Euna,F,24
 Freeda,F,24
-Gloria,F,24
 Goldia,F,24
 Hanna,F,24
 Hassie,F,24
@@ -721,6 +720,7 @@ Elvina,F,23
 Exie,F,23
 Felicia,F,23
 Garnett,F,23
+Gloria,F,23
 Hildred,F,23
 Icy,F,23
 Jossie,F,23
@@ -2067,7 +2067,7 @@ Carl,M,952
 Louis,M,912
 Richard,M,908
 Earl,M,877
-Ralph,M,867
+Ralph,M,866
 Ernest,M,790
 Charlie,M,761
 David,M,761
@@ -2351,12 +2351,12 @@ Emery,M,39
 Garland,M,39
 Lynn,M,39
 Newton,M,39
-Alton,M,38
 Conrad,M,38
 Freddie,M,38
 Joel,M,38
 Murray,M,38
 Wendell,M,38
+Alton,M,37
 Anderson,M,37
 Carlos,M,37
 Carlton,M,37
@@ -2368,10 +2368,10 @@ Riley,M,37
 Angelo,M,36
 Lucius,M,36
 Myron,M,36
+Otho,M,36
 Scott,M,36
 Coy,M,35
 Dick,M,35
-Otho,M,35
 Pat,M,35
 Pearl,M,35
 Randolph,M,34
@@ -2402,6 +2402,7 @@ Russel,M,31
 Foster,M,30
 Helen,M,30
 Houston,M,30
+Jeremiah,M,30
 Odell,M,30
 Sterling,M,30
 Vern,M,30
@@ -2410,7 +2411,6 @@ Burton,M,29
 Buster,M,29
 Elliott,M,29
 Elvin,M,29
-Jeremiah,M,29
 King,M,29
 Emerson,M,28
 Francisco,M,28

@@ -32,7 +32,7 @@ Esther,F,1803
 Elsie,F,1795
 Sarah,F,1777
 Eva,F,1767
-Ella,F,1693
+Ella,F,1692
 Laura,F,1643
 Louise,F,1582
 Catherine,F,1514
@@ -224,7 +224,7 @@ Johanna,F,151
 Bess,F,150
 Gussie,F,150
 Jeannette,F,150
-Carolyn,F,149
+Carolyn,F,148
 Leila,F,147
 Katharine,F,145
 Adelaide,F,142
@@ -430,10 +430,10 @@ Esta,F,44
 Hilma,F,44
 Iris,F,44
 Nita,F,44
-Shirley,F,44
 Eda,F,43
 Elisabeth,F,43
 Jimmie,F,43
+Shirley,F,43
 Albina,F,42
 Annabelle,F,42
 Lilian,F,42
@@ -1806,7 +1806,7 @@ Weltha,F,5
 Xenia,F,5
 Zaidee,F,5
 Zylpha,F,5
-John,M,8321
+John,M,8320
 William,M,7277
 James,M,5335
 George,M,4289
@@ -1827,8 +1827,8 @@ Willie,M,1071
 Roy,M,1028
 Paul,M,933
 Louis,M,913
-Earl,M,852
 Carl,M,851
+Earl,M,851
 Ernest,M,834
 Samuel,M,814
 Raymond,M,806
@@ -1862,7 +1862,7 @@ Peter,M,412
 Frederick,M,406
 Claude,M,389
 Ray,M,380
-Chester,M,378
+Chester,M,377
 Lewis,M,377
 Clyde,M,370
 Edwin,M,346

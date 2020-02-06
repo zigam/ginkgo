@@ -1842,7 +1842,7 @@ Zilla,F,5
 Zollie,F,5
 John,M,6990
 William,M,6086
-James,M,4598
+James,M,4597
 George,M,4018
 Charles,M,3147
 Joseph,M,2679
@@ -1871,7 +1871,7 @@ Richard,M,744
 Ralph,M,742
 Samuel,M,704
 Charlie,M,678
-David,M,647
+David,M,646
 Herbert,M,590
 Howard,M,589
 Jack,M,582

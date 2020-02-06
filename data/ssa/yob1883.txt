@@ -110,7 +110,7 @@ Ora,F,212
 Amy,F,209
 Hannah,F,209
 Henrietta,F,203
-Pauline,F,197
+Pauline,F,198
 Eleanor,F,185
 Marion,F,184
 Anne,F,183
@@ -257,14 +257,14 @@ Myrtie,F,50
 Linda,F,49
 Lucile,F,49
 Madge,F,49
-Marjorie,F,49
 Norma,F,49
 Eugenia,F,48
 Geneva,F,48
-Marian,F,48
+Marjorie,F,48
 Roberta,F,48
 Louella,F,47
 Malinda,F,47
+Marian,F,47
 Olivia,F,46
 Annette,F,45
 Antoinette,F,44
@@ -647,7 +647,6 @@ Serena,F,10
 Theodosia,F,10
 Vernie,F,10
 Viva,F,10
-Winona,F,10
 Zola,F,10
 Ardella,F,9
 Birtie,F,9
@@ -689,6 +688,7 @@ Sidney,F,9
 Simona,F,9
 Tessie,F,9
 Thora,F,9
+Winona,F,9
 Aileen,F,8
 Albertina,F,8
 Alda,F,8
@@ -1054,7 +1054,7 @@ Zillah,F,5
 Zoa,F,5
 John,M,8894
 William,M,8387
-James,M,5224
+James,M,5223
 Charles,M,4826
 George,M,4736
 Frank,M,2986
@@ -1071,7 +1071,7 @@ Albert,M,1496
 Samuel,M,937
 Clarence,M,837
 Louis,M,796
-David,M,735
+David,M,734
 Richard,M,649
 Charlie,M,643
 Ernest,M,641
@@ -1397,7 +1397,6 @@ Francisco,M,24
 Isiah,M,24
 Judge,M,24
 Lem,M,24
-Roger,M,24
 Emile,M,23
 Hamilton,M,23
 Malcolm,M,23
@@ -1407,6 +1406,7 @@ Neil,M,23
 Omer,M,23
 Phil,M,23
 Porter,M,23
+Roger,M,23
 Sandy,M,23
 Sim,M,23
 Vern,M,23
@@ -1601,7 +1601,6 @@ Lindsey,M,12
 Mason,M,12
 Miguel,M,12
 Orson,M,12
-Randall,M,12
 Reginald,M,12
 Rush,M,12
 Squire,M,12
@@ -1638,6 +1637,7 @@ Oran,M,11
 Orange,M,11
 Orlando,M,11
 Orrin,M,11
+Randall,M,11
 Rodney,M,11
 Stuart,M,11
 Sydney,M,11

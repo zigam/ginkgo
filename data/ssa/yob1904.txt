@@ -1,4 +1,4 @@
-Mary,F,14962
+Mary,F,14961
 Helen,F,6488
 Anna,F,5330
 Margaret,F,5302
@@ -118,7 +118,7 @@ Eunice,F,502
 Lottie,F,497
 Sylvia,F,497
 Katie,F,494
-Mable,F,486
+Mable,F,485
 Jean,F,483
 Sallie,F,483
 Genevieve,F,481
@@ -1352,7 +1352,6 @@ Rafaela,F,9
 Refugio,F,9
 Roena,F,9
 Roselle,F,9
-Sandra,F,9
 Stephania,F,9
 Thalia,F,9
 Tishie,F,9
@@ -1460,6 +1459,7 @@ Rella,F,8
 Richard,F,8
 Rosena,F,8
 Samantha,F,8
+Sandra,F,8
 Sina,F,8
 Stacia,F,8
 Stacy,F,8
@@ -2134,7 +2134,6 @@ Sarrah,F,5
 Senaida,F,5
 Siddie,F,5
 Silvia,F,5
-Sonya,F,5
 Stanley,F,5
 Steffie,F,5
 Susannah,F,5
@@ -2894,6 +2893,7 @@ Beverly,M,11
 Brooks,M,11
 Buddie,M,11
 Buddy,M,11
+Burley,M,11
 Collins,M,11
 Connie,M,11
 Dana,M,11
@@ -2930,7 +2930,6 @@ Author,M,10
 Bailey,M,10
 Benjiman,M,10
 Bertrand,M,10
-Burley,M,10
 Caleb,M,10
 Carson,M,10
 Dawson,M,10

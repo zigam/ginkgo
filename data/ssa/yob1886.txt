@@ -1,4 +1,4 @@
-Mary,F,9890
+Mary,F,9889
 Anna,F,4283
 Emma,F,2764
 Elizabeth,F,2680
@@ -24,7 +24,7 @@ Edna,F,1314
 Lillian,F,1282
 Helen,F,1267
 Rose,F,1261
-Gertrude,F,1250
+Gertrude,F,1249
 Cora,F,1231
 Pearl,F,1204
 Maude,F,1189
@@ -1287,12 +1287,12 @@ George,M,4671
 Charles,M,4533
 Frank,M,3127
 Joseph,M,2594
-Robert,M,2444
+Robert,M,2443
 Henry,M,2404
 Thomas,M,2337
 Edward,M,2312
 Harry,M,2257
-Walter,M,1880
+Walter,M,1881
 Arthur,M,1656
 Fred,M,1599
 Albert,M,1488
@@ -1366,7 +1366,7 @@ Alexander,M,206
 August,M,203
 Ira,M,198
 Eddie,M,197
-Philip,M,186
+Philip,M,187
 Marion,M,182
 Jessie,M,181
 Stephen,M,181

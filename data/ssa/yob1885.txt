@@ -1252,7 +1252,7 @@ Ed,M,328
 Herman,M,326
 Francis,M,319
 Clyde,M,318
-Raymond,M,307
+Raymond,M,308
 Harvey,M,304
 Edgar,M,303
 Jack,M,295
@@ -1273,8 +1273,8 @@ Ira,M,235
 Homer,M,228
 Patrick,M,217
 Alexander,M,205
-Leonard,M,205
 Isaac,M,204
+Leonard,M,204
 Jessie,M,202
 Harold,M,201
 Leo,M,199
@@ -1778,7 +1778,6 @@ Aubrey,M,11
 Bertie,M,11
 Brooks,M,11
 Colonel,M,11
-Dean,M,11
 Emmitt,M,11
 Ephraim,M,11
 Freddie,M,11
@@ -1809,6 +1808,7 @@ Benton,M,10
 Birt,M,10
 Byrd,M,10
 Carter,M,10
+Dean,M,10
 Ewing,M,10
 Ezekiel,M,10
 Godfrey,M,10

@@ -69,7 +69,7 @@ Beatrice,F,942
 Dora,F,862
 Willie,F,818
 Nora,F,812
-Pauline,F,778
+Pauline,F,777
 Vera,F,776
 Rosa,F,770
 Maggie,F,760
@@ -77,7 +77,7 @@ Sadie,F,757
 Ellen,F,733
 Marguerite,F,728
 Effie,F,698
-Evelyn,F,691
+Evelyn,F,690
 Beulah,F,688
 Lucille,F,648
 Lydia,F,642
@@ -1798,7 +1798,7 @@ Zellie,F,5
 Zilda,F,5
 Zylpha,F,5
 John,M,7550
-William,M,7199
+William,M,7198
 James,M,5113
 George,M,4078
 Charles,M,3341
@@ -1848,7 +1848,7 @@ Floyd,M,451
 Eugene,M,447
 Herman,M,412
 Peter,M,397
-Ray,M,396
+Ray,M,397
 Edwin,M,380
 Benjamin,M,378
 Lewis,M,378
@@ -2014,8 +2014,8 @@ Loyd,M,61
 Sherman,M,61
 Hobert,M,60
 Jerome,M,60
-Leland,M,60
 Jeff,M,59
+Leland,M,59
 Levi,M,59
 Wiley,M,59
 Abe,M,58

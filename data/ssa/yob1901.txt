@@ -98,7 +98,7 @@ Effie,F,545
 Olive,F,539
 Emily,F,537
 Della,F,534
-Doris,F,531
+Doris,F,530
 Nancy,F,519
 Lydia,F,507
 Anne,F,504
@@ -109,7 +109,7 @@ Lola,F,493
 Lois,F,488
 Sallie,F,488
 Marjorie,F,480
-Betty,F,474
+Betty,F,473
 Ollie,F,462
 Inez,F,459
 Lizzie,F,458
@@ -130,7 +130,7 @@ Sylvia,F,390
 Velma,F,388
 Alberta,F,386
 Henrietta,F,383
-Estelle,F,381
+Estelle,F,382
 Etta,F,381
 Rachel,F,369
 Essie,F,368
@@ -320,10 +320,10 @@ Lily,F,89
 Catharine,F,88
 Eloise,F,88
 Abbie,F,87
-Eileen,F,87
 Erna,F,87
 Eugenia,F,87
 Golda,F,87
+Eileen,F,86
 Linda,F,86
 Alvina,F,85
 Lona,F,85
@@ -637,7 +637,6 @@ Freddie,F,25
 Freida,F,25
 Gail,F,25
 Joy,F,25
-Judith,F,25
 Leda,F,25
 Melva,F,25
 Mercedes,F,25
@@ -651,6 +650,7 @@ Emilia,F,24
 Ethelyn,F,24
 Ettie,F,24
 Hassie,F,24
+Judith,F,24
 Juliette,F,24
 Loma,F,24
 Louvenia,F,24
@@ -1941,7 +1941,7 @@ Zana,F,5
 Zeffie,F,5
 Zilpha,F,5
 Zuma,F,5
-John,M,6899
+John,M,6900
 William,M,5990
 James,M,4735
 George,M,3609
@@ -1977,10 +1977,10 @@ Samuel,M,628
 Howard,M,584
 Herbert,M,573
 Francis,M,543
-Lawrence,M,536
+Lawrence,M,535
 Elmer,M,520
 Alfred,M,506
-Andrew,M,480
+Andrew,M,479
 Sam,M,479
 Leo,M,456
 Theodore,M,450
@@ -2186,12 +2186,12 @@ Byron,M,51
 Wilson,M,51
 Anton,M,50
 Bob,M,49
-Elwood,M,49
 Fredrick,M,49
 Grover,M,49
 Mose,M,49
 Abe,M,48
 Don,M,48
+Elwood,M,48
 Johnny,M,48
 Wilfred,M,47
 Carroll,M,46

@@ -7,7 +7,7 @@ Dorothy,F,4967
 Elizabeth,F,4624
 Mildred,F,4277
 Alice,F,4107
-Marie,F,3879
+Marie,F,3880
 Florence,F,3750
 Ethel,F,3698
 Lillian,F,3542
@@ -85,7 +85,7 @@ Lula,F,905
 Lois,F,899
 Opal,F,889
 Marguerite,F,888
-Kathryn,F,865
+Kathryn,F,864
 Ellen,F,855
 Velma,F,854
 Maggie,F,846
@@ -2398,7 +2398,7 @@ Zoa,F,5
 Zonnie,F,5
 Zuma,F,5
 John,M,8983
-William,M,6905
+William,M,6904
 James,M,6707
 George,M,4445
 Robert,M,4020
@@ -2415,10 +2415,10 @@ Albert,M,1636
 Arthur,M,1553
 Harold,M,1452
 Clarence,M,1389
-Fred,M,1370
+Fred,M,1371
 Paul,M,1358
 Raymond,M,1290
-Richard,M,1236
+Richard,M,1235
 Joe,M,1177
 Roy,M,1128
 Louis,M,1111
@@ -2427,7 +2427,7 @@ Carl,M,1018
 Earl,M,1006
 Ralph,M,998
 Ernest,M,978
-David,M,946
+David,M,945
 Samuel,M,892
 Howard,M,875
 Lawrence,M,801
@@ -2435,7 +2435,7 @@ Charlie,M,793
 Alfred,M,738
 Francis,M,717
 Theodore,M,712
-Herbert,M,710
+Herbert,M,711
 Andrew,M,708
 Eugene,M,691
 Leo,M,651
@@ -2445,7 +2445,7 @@ Elmer,M,616
 Anthony,M,593
 Kenneth,M,589
 Michael,M,586
-Herman,M,562
+Herman,M,561
 Leroy,M,550
 Leonard,M,547
 Daniel,M,528
@@ -2539,9 +2539,9 @@ Jose,M,170
 Otto,M,170
 Jerry,M,165
 Charley,M,164
-Jimmie,M,161
 Nicholas,M,161
 Dan,M,160
+Jimmie,M,160
 Percy,M,160
 Mike,M,157
 Steve,M,157
@@ -2623,8 +2623,8 @@ Wilson,M,83
 Alonzo,M,82
 Claud,M,82
 Merle,M,82
-Timothy,M,82
 Don,M,81
+Timothy,M,81
 Simon,M,79
 Laurence,M,78
 Bob,M,77

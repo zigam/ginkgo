@@ -3,7 +3,7 @@ Anna,F,3860
 Emma,F,2587
 Elizabeth,F,2549
 Minnie,F,2243
-Margaret,F,2143
+Margaret,F,2142
 Ida,F,1882
 Clara,F,1852
 Bertha,F,1789
@@ -432,7 +432,6 @@ Leta,F,22
 Lilian,F,22
 Lucia,F,22
 Lucie,F,22
-Muriel,F,22
 Myrta,F,22
 Ocie,F,22
 Ray,F,22
@@ -443,6 +442,7 @@ Hanna,F,21
 Kathrine,F,21
 Leonora,F,21
 Mariah,F,21
+Muriel,F,21
 Patsy,F,21
 Retta,F,21
 Vada,F,21
@@ -559,7 +559,6 @@ Anner,F,14
 Arrie,F,14
 Beryl,F,14
 Carmen,F,14
-Dolores,F,14
 Dorcas,F,14
 Effa,F,14
 Elda,F,14
@@ -590,6 +589,7 @@ Carolina,F,13
 Clora,F,13
 Corine,F,13
 Deborah,F,13
+Dolores,F,13
 Elinor,F,13
 Emilia,F,13
 Ena,F,13
@@ -1176,10 +1176,10 @@ James,M,5693
 George,M,4961
 Charles,M,4802
 Frank,M,3218
-Joseph,M,2708
+Joseph,M,2707
 Thomas,M,2572
 Henry,M,2474
-Robert,M,2469
+Robert,M,2468
 Edward,M,2439
 Harry,M,2323
 Walter,M,1902
@@ -1208,7 +1208,7 @@ Elmer,M,523
 Carl,M,521
 Alfred,M,520
 Benjamin,M,509
-Lewis,M,477
+Lewis,M,476
 Earl,M,464
 Ralph,M,464
 Frederick,M,454

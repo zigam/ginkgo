@@ -3,7 +3,7 @@ Helen,F,9250
 Margaret,F,7359
 Ruth,F,6509
 Dorothy,F,6253
-Anna,F,5803
+Anna,F,5804
 Elizabeth,F,5176
 Mildred,F,5054
 Marie,F,4301
@@ -19,7 +19,7 @@ Evelyn,F,3157
 Louise,F,3019
 Irene,F,2961
 Grace,F,2912
-Annie,F,2903
+Annie,F,2904
 Catherine,F,2897
 Hazel,F,2708
 Gertrude,F,2622
@@ -33,7 +33,7 @@ Clara,F,2403
 Edith,F,2371
 Emma,F,2338
 Bessie,F,2276
-Lucille,F,2191
+Lucille,F,2192
 Esther,F,2185
 Beatrice,F,2105
 Elsie,F,2064
@@ -83,7 +83,7 @@ Opal,F,1028
 Jennie,F,998
 Mamie,F,974
 Cora,F,969
-Ellen,F,961
+Ellen,F,960
 Rosa,F,959
 Ada,F,945
 Violet,F,945
@@ -263,7 +263,7 @@ Lenora,F,189
 Cecile,F,186
 Bertie,F,184
 Kate,F,183
-Annette,F,182
+Annette,F,181
 Madge,F,180
 Augusta,F,179
 Hester,F,179
@@ -665,6 +665,7 @@ Enid,F,36
 Florida,F,36
 Lupe,F,36
 Macie,F,36
+Norine,F,36
 Antonette,F,35
 Beverly,F,35
 Celestine,F,35
@@ -678,7 +679,6 @@ Leslie,F,35
 Lonnie,F,35
 Madaline,F,35
 Mellie,F,35
-Norine,F,35
 William,F,35
 Zenobia,F,35
 Arvilla,F,34
@@ -2552,7 +2552,7 @@ James,M,7594
 George,M,4688
 Robert,M,4563
 Joseph,M,4348
-Charles,M,4030
+Charles,M,4029
 Frank,M,3244
 Edward,M,2935
 Thomas,M,2468
@@ -2606,7 +2606,7 @@ Clifford,M,536
 Russell,M,528
 Jesse,M,517
 Clyde,M,516
-Lester,M,500
+Lester,M,501
 Edwin,M,492
 Benjamin,M,489
 Frederick,M,477
@@ -2794,10 +2794,10 @@ Hyman,M,81
 Ross,M,81
 Elmo,M,80
 Mary,M,80
-Solomon,M,80
 Loyd,M,79
 Millard,M,79
 Nick,M,79
+Solomon,M,79
 Louie,M,78
 Erwin,M,76
 Freddie,M,76

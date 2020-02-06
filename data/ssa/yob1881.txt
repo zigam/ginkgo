@@ -510,7 +510,6 @@ Anastasia,F,11
 Annetta,F,11
 Audrey,F,11
 Camilla,F,11
-Carol,F,11
 Celina,F,11
 Christena,F,11
 Cordie,F,11
@@ -541,6 +540,7 @@ Agatha,F,10
 Almira,F,10
 Arrie,F,10
 Aura,F,10
+Carol,F,10
 Carolina,F,10
 Daisie,F,10
 Delilah,F,10
@@ -938,7 +938,7 @@ Verona,F,5
 Viney,F,5
 John,M,8769
 William,M,8524
-James,M,5442
+James,M,5441
 George,M,4664
 Charles,M,4636
 Frank,M,2834
@@ -1005,7 +1005,7 @@ Lawrence,M,244
 Oliver,M,238
 Clyde,M,232
 Otto,M,221
-Hugh,M,220
+Hugh,M,219
 Alexander,M,209
 Leonard,M,206
 Jack,M,197

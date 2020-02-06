@@ -1,7 +1,7 @@
 Mary,F,8148
 Anna,F,3143
 Emma,F,2303
-Elizabeth,F,2187
+Elizabeth,F,2186
 Minnie,F,2004
 Margaret,F,1821
 Ida,F,1673
@@ -56,7 +56,7 @@ Effie,F,561
 Blanche,F,547
 Rosa,F,542
 Nora,F,539
-May,F,511
+May,F,510
 Mamie,F,508
 Stella,F,506
 Lizzie,F,495
@@ -371,7 +371,6 @@ Veronica,F,24
 Vinnie,F,24
 Adelia,F,23
 Charles,F,23
-Kathleen,F,23
 Pattie,F,23
 Pinkie,F,23
 Retta,F,23
@@ -382,6 +381,7 @@ Isabell,F,22
 Jimmie,F,22
 Julie,F,22
 June,F,22
+Kathleen,F,22
 Lucie,F,22
 Mariah,F,22
 Neva,F,22
@@ -1030,7 +1030,7 @@ John,M,9557
 William,M,9298
 James,M,5892
 George,M,5193
-Charles,M,5092
+Charles,M,5091
 Frank,M,3176
 Joseph,M,2670
 Thomas,M,2610
@@ -1339,12 +1339,12 @@ Roger,M,32
 Burt,M,31
 Seth,M,31
 Archibald,M,30
-Elwood,M,30
 Mary,M,30
 Omer,M,30
 Ward,M,30
 Antonio,M,29
 Boyd,M,29
+Elwood,M,29
 Freeman,M,29
 Napoleon,M,29
 Wilber,M,29

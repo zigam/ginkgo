@@ -39,7 +39,7 @@ Agnes,F,1393
 Esther,F,1382
 Julia,F,1367
 Lillie,F,1351
-Catherine,F,1335
+Catherine,F,1336
 Hattie,F,1315
 Cora,F,1308
 Jennie,F,1273
@@ -157,7 +157,7 @@ Maria,F,255
 Violet,F,254
 Ina,F,248
 Sophia,F,247
-Christine,F,245
+Christine,F,244
 Genevieve,F,243
 Rosie,F,242
 Sophie,F,235
@@ -294,11 +294,11 @@ Rosalie,F,86
 Emilie,F,85
 Ivy,F,83
 Lily,F,83
-Linda,F,83
 Mabelle,F,83
 Myrtie,F,83
 Oma,F,83
 Eugenia,F,82
+Linda,F,82
 Mittie,F,82
 Ona,F,82
 Roberta,F,82
@@ -1652,7 +1652,7 @@ Zera,F,5
 Zeta,F,5
 John,M,8049
 William,M,7223
-James,M,5028
+James,M,5030
 George,M,4320
 Charles,M,3723
 Joseph,M,2997
@@ -1667,7 +1667,7 @@ Arthur,M,1635
 Fred,M,1493
 Albert,M,1353
 Clarence,M,1169
-Roy,M,920
+Roy,M,919
 Willie,M,882
 Samuel,M,851
 Earl,M,819
@@ -1691,7 +1691,7 @@ Alfred,M,530
 Daniel,M,522
 Andrew,M,520
 Herbert,M,519
-Benjamin,M,481
+Benjamin,M,482
 Sam,M,481
 Herman,M,455
 Leo,M,448
@@ -1959,11 +1959,11 @@ Verne,M,33
 Antonio,M,32
 Aubrey,M,32
 Fletcher,M,32
+Nels,M,32
 Wilbert,M,32
 Aloysius,M,31
 Delbert,M,31
 Isiah,M,31
-Nels,M,31
 Omer,M,31
 Pedro,M,31
 Arch,M,30
@@ -2586,7 +2586,6 @@ Cleon,M,6
 Curt,M,6
 Daisy,M,6
 Dannie,M,6
-Darrell,M,6
 Doctor,M,6
 Duke,M,6
 Elex,M,6
@@ -2725,6 +2724,7 @@ Clemence,M,5
 Collie,M,5
 Coy,M,5
 Danial,M,5
+Darrell,M,5
 Darwin,M,5
 Dempsey,M,5
 Doll,M,5

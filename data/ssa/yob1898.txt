@@ -25,7 +25,7 @@ Gertrude,F,2302
 Martha,F,2184
 Pearl,F,2158
 Gladys,F,2136
-Mildred,F,2102
+Mildred,F,2101
 Ida,F,2090
 Myrtle,F,2090
 Esther,F,2047
@@ -58,8 +58,8 @@ Jennie,F,1194
 Ruby,F,1191
 Lucy,F,1144
 Beatrice,F,1122
-Marion,F,1086
 Fannie,F,1085
+Marion,F,1085
 Mamie,F,1084
 Lula,F,1069
 Stella,F,1062
@@ -70,7 +70,7 @@ Katherine,F,914
 Pauline,F,900
 Willie,F,878
 Maggie,F,876
-Vera,F,875
+Vera,F,876
 Nora,F,868
 Rosa,F,841
 Evelyn,F,836
@@ -1998,7 +1998,7 @@ Harold,M,963
 Raymond,M,929
 Carl,M,919
 Earl,M,883
-Richard,M,873
+Richard,M,872
 Louis,M,862
 Ernest,M,839
 Joe,M,827
@@ -2021,7 +2021,7 @@ Daniel,M,523
 Lee,M,498
 Jesse,M,476
 Will,M,475
-Eugene,M,474
+Eugene,M,473
 Herman,M,467
 Floyd,M,434
 Michael,M,434
@@ -2055,7 +2055,7 @@ Lloyd,M,265
 Otto,M,259
 Eddie,M,256
 Jacob,M,256
-Leon,M,252
+Leon,M,251
 Hugh,M,250
 Homer,M,246
 Philip,M,244
@@ -2514,7 +2514,6 @@ Theo,M,16
 Theron,M,16
 Thurman,M,16
 Truman,M,16
-Unknown,M,16
 West,M,16
 Wilburn,M,16
 Alvie,M,15
@@ -2543,6 +2542,7 @@ Ruth,M,15
 Shirley,M,15
 Smith,M,15
 Turner,M,15
+Unknown,M,15
 Walton,M,15
 Wilford,M,15
 Alan,M,14

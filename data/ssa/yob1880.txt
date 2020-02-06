@@ -18,7 +18,7 @@ Laura,F,1012
 Nellie,F,995
 Grace,F,982
 Carrie,F,949
-Maude,F,858
+Maude,F,859
 Mabel,F,808
 Bessie,F,796
 Jennie,F,793
@@ -59,7 +59,7 @@ Mamie,F,436
 Blanche,F,427
 Stella,F,414
 Ellen,F,411
-Nancy,F,411
+Nancy,F,410
 Effie,F,406
 Sallie,F,404
 Nettie,F,403
@@ -512,6 +512,7 @@ Lotta,F,12
 Mame,F,12
 Nevada,F,12
 Rachael,F,12
+Robert,F,12
 Sina,F,12
 Willa,F,12
 Aline,F,11
@@ -536,7 +537,6 @@ Malvina,F,11
 Mathilde,F,11
 Mazie,F,11
 Queenie,F,11
-Robert,F,11
 Rosina,F,11
 Salome,F,11
 Theodora,F,11
@@ -1287,13 +1287,13 @@ Emerson,M,25
 Fletcher,M,25
 Judge,M,25
 Laurence,M,25
-Neil,M,25
 Roger,M,25
 Seth,M,25
 Glen,M,24
 Hugo,M,24
 Jimmie,M,24
 Johnnie,M,24
+Neil,M,24
 Washington,M,24
 Elwood,M,23
 Gust,M,23

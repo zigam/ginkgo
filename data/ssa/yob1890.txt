@@ -3,7 +3,7 @@ Anna,F,5233
 Elizabeth,F,3112
 Margaret,F,3100
 Emma,F,2980
-Florence,F,2745
+Florence,F,2744
 Ethel,F,2718
 Minnie,F,2650
 Clara,F,2496
@@ -1546,7 +1546,7 @@ Edward,M,2282
 Thomas,M,2200
 Walter,M,1905
 Arthur,M,1610
-Fred,M,1507
+Fred,M,1506
 Albert,M,1417
 Clarence,M,1018
 Roy,M,941
@@ -1607,7 +1607,7 @@ Guy,M,249
 Jessie,M,241
 Leroy,M,236
 Patrick,M,227
-Lester,M,225
+Lester,M,226
 Homer,M,223
 Stanley,M,223
 Archie,M,221

@@ -1,6 +1,6 @@
 Mary,F,13151
 Anna,F,5565
-Margaret,F,3701
+Margaret,F,3700
 Helen,F,3676
 Elizabeth,F,3425
 Ruth,F,3372
@@ -1748,7 +1748,7 @@ Lee,M,455
 Floyd,M,445
 Jack,M,441
 Herman,M,433
-Lawrence,M,431
+Lawrence,M,430
 Francis,M,423
 Michael,M,423
 Eugene,M,421
@@ -1894,9 +1894,9 @@ Perry,M,78
 Nathaniel,M,77
 Nicholas,M,77
 Alva,M,76
-Gerald,M,76
 Gus,M,76
 Nelson,M,76
+Gerald,M,75
 Noah,M,74
 Abraham,M,73
 Bill,M,73
@@ -2034,7 +2034,6 @@ Wilbert,M,30
 Burton,M,29
 Garland,M,29
 Johnny,M,29
-Lemuel,M,29
 Noble,M,29
 Alton,M,28
 Chauncey,M,28
@@ -2045,6 +2044,7 @@ Dorsey,M,28
 Freddie,M,28
 Jeremiah,M,28
 Junius,M,28
+Lemuel,M,28
 Lynn,M,28
 Pat,M,28
 Wilford,M,28
