@@ -33,7 +33,7 @@ from name_parser_maps import COUNTRIES, UNICODE_MAP
 
 import pycountry
 
-MIN_NAMES_PER_COUNTRY = 50
+MIN_NAMES_PER_COUNTRY = 20
 
 def unicode_name(name):
     """Covert name to unicode."""
@@ -164,7 +164,7 @@ def parse_wikidata_names():
             count = int(count)
             population[country] += count
             name = name.strip().title()
-            if '.' in name or re.search('[0-9]', name) or count < 2:
+            if '.' in name or '/' in name or re.search('[0-9]', name) or count < 2:
                 continue
             gender = format_gender(gender)
             country_rankings = {country: count}
@@ -279,10 +279,13 @@ def write_names(names):
     output.write('\n')
     output.close()
 
-def write_countries(names):
-    output = open('../data/generated/countries.json', 'w')
-    f_countries = OrderedDict()
+def filter_countries(names, names_in):
+    """
+    Filter countries where we don't have good data.
 
+    Remove countries with few names.
+    Also Remove Sri Lankan names that we haven't found in the Indian database.
+    """
     all_countries = set()
     names_per_country_male, names_per_country_female = defaultdict(int), defaultdict(int)
     for _, name_dict in names.items():
@@ -298,21 +301,45 @@ def write_countries(names):
                 elif gender == 'female':
                     names_per_country_female[country] += 1
 
+    def filter_country(code):
+        return (names_per_country_male[code] >= MIN_NAMES_PER_COUNTRY and
+                names_per_country_female[code] >= MIN_NAMES_PER_COUNTRY)
+
+    all_countries = list(filter(filter_country, all_countries))
+
+    for name, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            if ('lk' in country_rankings and 'in' in country_rankings and
+                country_rankings['lk'] == country_rankings['in'] and
+                name not in names_in):
+                del country_rankings['in']
+            for code in list(country_rankings):
+                if code not in all_countries:
+                    del country_rankings[code]
+
+def write_countries(names):
+    output = open('../data/generated/countries.json', 'w')
+    f_countries = OrderedDict()
+
+    all_countries = set()
+    for _, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            if gender == 'metaphone':
+                continue
+            for country, _ in country_rankings.items():
+                if not country:
+                    continue
+                all_countries.add(country)
+
     for code in all_countries:
         if code == 'AR':
             continue
         country = pycountry.countries.get(alpha_2=code.upper())
         if country:
-            f_countries[code] = country.name
+            f_countries[code] = getattr(country, 'common_name', country.name)
         else:
             print('invalid country code:', code)
 
-    def filter_country(country):
-        code = country[0]
-        return (names_per_country_male[code] >= MIN_NAMES_PER_COUNTRY and
-                names_per_country_female[code] >= MIN_NAMES_PER_COUNTRY)
-
-    f_countries = OrderedDict(filter(filter_country, f_countries.items()))
     f_countries = OrderedDict(sorted(f_countries.items(), key=lambda x: x[1]))
 
     print('total countries: ', len(f_countries))
@@ -338,14 +365,7 @@ def main():
     names_in = parse_in_names()
     merge_names_for_country(names, 'in', names_in)
 
-    # Remove Sri Lankan names that we haven't found in the Indian database.
-    for name, name_dict in names.items():
-        for gender, country_rankings in name_dict.items():
-            if ('lk' in country_rankings and 'in' in country_rankings and
-                country_rankings['lk'] == country_rankings['in'] and
-                name not in names_in):
-                del country_rankings['in']
-
+    filter_countries(names, names_in)
     add_phonetic_encoding(names)
 
     print('total names: ', len(names))

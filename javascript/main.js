@@ -66,8 +66,9 @@ function dropdown_change(dropdown, selected_link) {
     var countries = [];
     $('.country-dropdown').each(function(i, elt) {
         var button = $('#' + $(elt).attr('aria-labelledby'));
-        if (button.data('value')) {
-          countries.push(button.data('value'));
+        country = button.data('value')
+        if (country && countries.indexOf(country) == -1) {
+          countries.push(country);
         }
     });
     window.localStorage.setItem('selected_countries', JSON.stringify(countries));
@@ -108,7 +109,7 @@ function generate_tooltip(name, gender, countries) {
         countries_set[countries[i]] = true;
     }
     tooltips.push('<strong>Name popularity:</strong>');
-    var name_variants = name.split(',');
+    var name_variants = name.split(' / ');
     for (var i = 0; i < name_variants.length; i++) {
         var name = $.trim(name_variants[i]);
         tooltips.push('<strong>' + name + '</strong>');
@@ -155,21 +156,21 @@ function render_results(results, gender, countries, exact) {
     var inner_div = $('#' + inner_div_id);
     inner_div.html('');
 
-    var first = true;
+    count = 0
     for (var i = 0; i < results.length; i++) {
         if (results[i][1] < MIN_DISPLAY_RANK) {
             continue;
         }
-        if (!first) {
-            var delimiter = exact ? document.createTextNode(', ') : $('<br />');
-            inner_div.append(delimiter);
-        }
-        first = false;
-        var span = $('<span data-toggle="tooltip" data-placement="top" data-html="true">' +
+        var span = $('<span class="name" data-toggle="tooltip" data-placement="top" data-html="true">' +
                      results[i][0] + '</span>');
         span.attr('title', generate_tooltip(results[i][0], gender, countries));
         inner_div.append(span);
+        count += 1
     }
+
+    var count_div_id = $('#' + inner_div_id + '_count');
+    count_div_id.html(count);
+
     div.show();
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

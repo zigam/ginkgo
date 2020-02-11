@@ -167,7 +167,7 @@ function find_phonetic_matches(names, countries, gender) {
                 n = c[j][1];
                 returned_names[n] = rank;
             }
-            var name_list = curr_names.join(', ');
+            var name_list = curr_names.join(' / ');
             if (name_list in returned_name_lists) {
                 continue;
             }
