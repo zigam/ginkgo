@@ -58,6 +58,8 @@ Here’s an example of Metaphone phonetic encoding:
 
 Since the phonetic encodings match, we can consider the pair (Karla, Carla) a good candidate for a Czech-American name.
 
+Note that while Double Metaphone takes into account spelling differences in some other languages, we expect it to work best for English pronunciation.  This limits its utility in finding similarly-sounding names across only non-English languages.
+
 ## Ranking
 
 Finally, we rank the results.  We weigh the results by popularity in their countries and separate exact matches from phonetic matches.  Ranking matters, but our goal is also to produce as many good candidates as possible in hopes of finding *the one*.
