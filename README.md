@@ -63,7 +63,9 @@ Since the phonetic encodings match, we can consider the pair (Karla, Carla) a go
 Finally, we rank the results.  We weigh the results by popularity in their countries and separate exact matches from phonetic matches.  Ranking matters, but our goal is also to produce as many good candidates as possible in hopes of finding *the one*.
 
 
-![](https://paper-attachments.dropbox.com/s_BBC0836981BAB97F767754878F8379F01D8BE66E3BE6C723B6EC31E01D416819_1581020810996_Screen+Shot+2020-02-06+at+12.26.31+PM.png)
+<kbd>
+  <img src="https://paper-attachments.dropbox.com/s_BBC0836981BAB97F767754878F8379F01D8BE66E3BE6C723B6EC31E01D416819_1581020810996_Screen+Shot+2020-02-06+at+12.26.31+PM.png" />
+</kbd>
 
 ## Results
 
