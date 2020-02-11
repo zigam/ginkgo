@@ -114,6 +114,10 @@ def parse_global_names():
             del country_rankings['EF']
         if 'XX' in country_rankings:
             del country_rankings['XX']
+        # Korean names include single-syllable variants of names, incorrectly
+        # marked as popular.  Exclude them.
+        if 'kr' in country_rankings:
+            del country_rankings['kr']
         if not len(country_rankings):
             continue
 
@@ -146,11 +150,10 @@ def compute_ranking(count, population):
     ranking = max(1, ranking)
     return ranking
 
-def parse_wikidata_names():
+def parse_wikidata_names(exclude_countries):
     """Parse names from the Wikidata query service."""
     names = defaultdict(dict)
     population = defaultdict(int)
-    exclude_countries = {'us', 'si', 'in'}
 
     for gender in 'male', 'female':
         for line in open(f'../data/wikidata/wikidata-names-{gender}.tsv'):
@@ -279,13 +282,7 @@ def write_names(names):
     output.write('\n')
     output.close()
 
-def filter_countries(names, names_in):
-    """
-    Filter countries where we don't have good data.
-
-    Remove countries with few names.
-    Also Remove Sri Lankan names that we haven't found in the Indian database.
-    """
+def get_all_countries(names):
     all_countries = set()
     names_per_country_male, names_per_country_female = defaultdict(int), defaultdict(int)
     for _, name_dict in names.items():
@@ -296,6 +293,24 @@ def filter_countries(names, names_in):
                 if not country:
                     continue
                 all_countries.add(country)
+    return all_countries
+
+def filter_countries(names, names_in):
+    """
+    Filter countries where we don't have good data.
+
+    Remove countries with few names.
+    Also Remove Sri Lankan names that we haven't found in the Indian database.
+    """
+    all_countries = get_all_countries(names)
+    names_per_country_male, names_per_country_female = defaultdict(int), defaultdict(int)
+    for _, name_dict in names.items():
+        for gender, country_rankings in name_dict.items():
+            if gender == 'metaphone':
+                continue
+            for country, _ in country_rankings.items():
+                if not country:
+                    continue
                 if gender == 'male':
                     names_per_country_male[country] += 1
                 elif gender == 'female':
@@ -321,17 +336,7 @@ def write_countries(names):
     output = open('../data/generated/countries.json', 'w')
     f_countries = OrderedDict()
 
-    all_countries = set()
-    for _, name_dict in names.items():
-        for gender, country_rankings in name_dict.items():
-            if gender == 'metaphone':
-                continue
-            for country, _ in country_rankings.items():
-                if not country:
-                    continue
-                all_countries.add(country)
-
-    for code in all_countries:
+    for code in get_all_countries(names):
         if code == 'AR':
             continue
         country = pycountry.countries.get(alpha_2=code.upper())
@@ -350,12 +355,8 @@ def write_countries(names):
 
 
 def main():
-    """Main."""
     names = parse_global_names()
-
-    names_wikidata = parse_wikidata_names()
-    merge_names(names, names_wikidata)
-
+    
     names_us = parse_us_names()
     merge_names_for_country(names, 'us', names_us)
 
@@ -364,6 +365,12 @@ def main():
 
     names_in = parse_in_names()
     merge_names_for_country(names, 'in', names_in)
+
+    # Get Wikidata names.  Exclude any countries we already have data for,
+    # since Wikidata's quality is worse.
+    exclude_countries = get_all_countries(names)
+    names_wikidata = parse_wikidata_names(exclude_countries)
+    merge_names(names, names_wikidata)
 
     filter_countries(names, names_in)
     add_phonetic_encoding(names)
