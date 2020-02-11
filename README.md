@@ -64,7 +64,7 @@ Finally, we rank the results.  We weigh the results by popularity in their count
 
 
 <kbd>
-  <img src="https://paper-attachments.dropbox.com/s_BBC0836981BAB97F767754878F8379F01D8BE66E3BE6C723B6EC31E01D416819_1581020810996_Screen+Shot+2020-02-06+at+12.26.31+PM.png" />
+  <img src="https://raw.githubusercontent.com/zigam/ginkgo/gh-pages/images/screenshot.png" />
 </kbd>
 
 ## Results
