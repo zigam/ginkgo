@@ -17,7 +17,7 @@ COUNTRIES = [
     ('be', 'Belgium'),
     ('lu', 'Luxembourg'),
     ('nl', 'Netherlands'),
-    ('EF', 'East Frisia'), # Not an ISO-2 country, ignored.
+    ('EF', 'East Frisia'),  # Not an ISO-2 country, ignored.
     ('de', 'Germany'),
     ('at', 'Austria'),
     ('ch', 'Switzerland'),
@@ -53,14 +53,14 @@ COUNTRIES = [
     ('ge', 'Georgia'),
     ('kz/kg/tj/tm/uz', 'Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan'),
     ('tr', 'Turkey'),
-    ('AR', 'Arab countries'), # Not an ISO-2 country.
+    ('AR', 'Arab countries'),  # Not an ISO-2 country.
     ('il', 'Israel'),
     ('cn', 'China'),
     ('in/lk', 'India, Sri Lanka'),
     ('jp', 'Japan'),
     ('kr', 'Repulic of Korea'),
     ('vn', 'Viet Nam'),
-    ('XX', 'Other countries'), # Ignored.
+    ('XX', 'Other countries'),  # Ignored.
 ]
 
 UNICODE_MAP = {

@@ -35,6 +35,7 @@ import pycountry
 
 MIN_NAMES_PER_COUNTRY = 20
 
+
 def unicode_name(name):
     """Covert name to unicode."""
     for code, patterns in UNICODE_MAP.items():
@@ -43,6 +44,7 @@ def unicode_name(name):
     assert name.find('<') == -1, name.encode('utf-8')
     assert name.find('>') == -1, name.encode('utf-8')
     return name
+
 
 def extract_country_rankings(countries):
     """Extract rankings from line."""
@@ -61,6 +63,7 @@ def extract_country_rankings(countries):
             country_rankings[code] = ranking
     return country_rankings
 
+
 def format_gender(gender):
     """Canonicalize gender string."""
     if gender in ('F', '1F', '?F', 'female'):
@@ -72,17 +75,20 @@ def format_gender(gender):
     else:
         raise Exception('Invalid gender: ' + gender)
 
+
 def merge_names_for_country(names_global, country, names_country):
     """Merge list of names for country into global list."""
     for name, values in names_country.items():
         for (gender, ranking) in values:
             merge_name(names_global, name, gender, {country: ranking})
 
+
 def merge_names(names_global, names_to_merge):
     """Merge list of names into global list."""
     for name, name_dict in names_to_merge.items():
         for gender, country_rankings in name_dict.items():
             merge_name(names_global, name, gender, country_rankings)
+
 
 def merge_name(names, name, gender, rankings):
     """Merge name into global list."""
@@ -92,6 +98,7 @@ def merge_name(names, name, gender, rankings):
     global_rankings = names[name][gender]
     for country, ranking in rankings.items():
         global_rankings[country] = max(ranking, global_rankings.get(country, 0))
+
 
 def parse_global_names():
     """Parse names from the gender.c database."""
@@ -139,6 +146,7 @@ def parse_global_names():
     print('global names: ', len(names))
     return names
 
+
 def compute_ranking(count, population):
     """Compute ranking for a name with population info."""
     if count <= 0:
@@ -149,6 +157,7 @@ def compute_ranking(count, population):
     ranking = min(13, ranking)
     ranking = max(1, ranking)
     return ranking
+
 
 def parse_wikidata_names(exclude_countries):
     """Parse names from the Wikidata query service."""
@@ -181,6 +190,7 @@ def parse_wikidata_names(exclude_countries):
                 country_rankings[country] = compute_ranking(count, population[country])
     return names
 
+
 def parse_us_names():
     """Parse names from the SSA database."""
     names = defaultdict(int)
@@ -207,6 +217,7 @@ def parse_us_names():
     print('us names: ', len(ret))
     return ret
 
+
 def parse_si_names():
     """Parse Slovenian names from the si-stat database."""
     name_list = []
@@ -230,6 +241,7 @@ def parse_si_names():
     print('si names: ', len(names))
     return names
 
+
 def parse_in_names():
     """Parse Indian names from the mibn database."""
     names = defaultdict(list)
@@ -249,11 +261,13 @@ def parse_in_names():
     print('in names: ', len(names))
     return names
 
+
 def is_slovenian_name(name_dict):
     """Whether this is a Slovenian name."""
     for _, country_rankings in name_dict.items():
         if 'si' in country_rankings.keys():
             return True
+
 
 def trimmed_metaphone(name):
     """Return the metaphone for the name."""
@@ -261,6 +275,7 @@ def trimmed_metaphone(name):
     if not metaphone[1]:
         metaphone = (metaphone[0],)
     return metaphone
+
 
 def add_phonetic_encoding(names):
     """Adds adds the phonetic encoding to the name database."""
@@ -270,6 +285,7 @@ def add_phonetic_encoding(names):
             si_name = name.replace('j', 'y').replace('J', 'Y')
             metaphone += trimmed_metaphone(si_name)
         names[name]['metaphone'] = metaphone
+
 
 def write_names(names):
     output = open('../data/generated/names.json', 'w')
@@ -282,9 +298,9 @@ def write_names(names):
     output.write('\n')
     output.close()
 
+
 def get_all_countries(names):
     all_countries = set()
-    names_per_country_male, names_per_country_female = defaultdict(int), defaultdict(int)
     for _, name_dict in names.items():
         for gender, country_rankings in name_dict.items():
             if gender == 'metaphone':
@@ -294,6 +310,7 @@ def get_all_countries(names):
                     continue
                 all_countries.add(country)
     return all_countries
+
 
 def filter_countries(names, names_in):
     """
@@ -325,12 +342,13 @@ def filter_countries(names, names_in):
     for name, name_dict in names.items():
         for gender, country_rankings in name_dict.items():
             if ('lk' in country_rankings and 'in' in country_rankings and
-                country_rankings['lk'] == country_rankings['in'] and
-                name not in names_in):
+               country_rankings['lk'] == country_rankings['in'] and
+               name not in names_in):
                 del country_rankings['in']
             for code in list(country_rankings):
                 if code not in all_countries:
                     del country_rankings[code]
+
 
 def write_countries(names):
     output = open('../data/generated/countries.json', 'w')
@@ -356,7 +374,7 @@ def write_countries(names):
 
 def main():
     names = parse_global_names()
-    
+
     names_us = parse_us_names()
     merge_names_for_country(names, 'us', names_us)
 
@@ -379,6 +397,7 @@ def main():
 
     write_names(names)
     write_countries(names)
+
 
 if __name__ == '__main__':
     main()
