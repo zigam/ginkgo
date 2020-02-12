@@ -69,7 +69,7 @@ Finally, we rank the results.  We weigh the results by popularity in their count
   <img src="https://raw.githubusercontent.com/zigam/ginkgo/gh-pages/images/screenshot.png" />
 </kbd>
 
-## Results
+## Results and some stats
 
 The final [dataset](https://github.com/zigam/ginkgo/blob/gh-pages/data/generated/names.json) after some cleanup contains:
 
@@ -81,6 +81,8 @@ The most international names weighted by popularity are:
 - Female: **Maria**, found in 79 countries.
 - Male: **David**, found in 94 countries.
 - Unisex: **Dominique**, found in 22 countries.
+
+There are no names for a boy that match across any pair of countries from the set: (Algeria, Greece, Lithuania, South Korea, Vietnam).
 
 The longest common single-word name is Sri Lankan **Thamotharampillai**.
 The most common short name is Vietnamese **My**.
