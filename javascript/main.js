@@ -1,6 +1,7 @@
 var MIN_DISPLAY_RANK = 0;
 var CARET = ' <span class="caret" />';
 var DEFAULT_SELECTED_COUNTRIES = ['us', 'in']
+var IPINFO_TOKEN = '6f8f0614933022'
 var names = {};
 var all_countries = {};
 
@@ -188,10 +189,11 @@ function load_data() {
             var selected_countries = JSON.parse(
                 window.localStorage.getItem('selected_countries') || '[]');
             if (!selected_countries.length) {
-                var jqxhr = $.getJSON('//ipinfo.io', function(data) {
-                    if (data && data.country && data.country != 'US') {
-                        code = data.country.toLowerCase();
-                        selected_countries = ['us', code];
+                var jqxhr = $.getJSON('//ipinfo.io?token=' + IPINFO_TOKEN, function(data) {
+                    console.log('country', data.country)
+                    if (data && data.country && data.country != 'US' &&
+                        data.country.toLowerCase() in all_countries) {
+                        selected_countries = ['us', data.country.toLowerCase()];
                         store_and_render(selected_countries);
                     } else {
                         selected_countries = DEFAULT_SELECTED_COUNTRIES;
