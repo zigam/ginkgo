@@ -1,11 +1,11 @@
 # An algorithm for naming babies
 Give it a try: https://zigam.github.io/ginkgo/
 
-When my wife and I were expecting our first, we faced a daunting task: naming our baby in a way that works across all of our cultures.  My wife was born in India, I was born in Slovenia, and our baby was about to be born the US (which is where we live).  We wanted the baby’s name to be pronounceable and familiar across all of these countries, while also passing the [Starbucks spelling test](https://www.thrillist.com/drink/nation/starbucks-spelling-tumblr-23-hilariously-misspelled-names-on-starbucks-coffee-cups).  Turns out naming is not only a hard problem in computer science.
+When my wife and I were expecting our first child, we faced a daunting task: naming our baby in a way that works across all of our cultures.  My wife was born in India, I was born in Slovenia, and our baby was about to be born in the US (which is where we live).  We wanted the baby’s name to be pronounceable and familiar across all of these countries, while also passing the [Starbucks spelling test](https://www.thrillist.com/drink/nation/starbucks-spelling-tumblr-23-hilariously-misspelled-names-on-starbucks-coffee-cups).  Turns out naming is hard, not just in computer science.
 
 As we worked our way through various baby naming web sites and suggestions from friends, we would occasionally stumble upon names that seemed to cross cultures: Maya, Ana, Max, etc.  But how do we find an exhaustive list of such universal names to find a name we both like?
 
-We’re both software engineers so we turned this into a data problem: we would need to collect large public datasets of first names with their country of origin, frequency, and optionally gender.  We would filter those lists to our countries of interest (Slovenia, India, and US) and intersect them.  However, we’re not only interested in exact name matches across countries — for example the name Maya is spelled Maja in Slovenian, but pronounced the same as in English.  We still consider this a good name candidate, so we have to take into account pronunciation when intersecting name lists.
+We’re both software engineers so we turned this into a data problem: if only we had large public datasets of first names with their country of origin, frequency, and optionally gender. We could then filter those lists to our countries of interest (Slovenia, India, and US) and intersect them. However, we’re not only interested in exact name matches across countries — for example the name Maya is spelled Maja in Slovenian, but pronounced the same as in English. We still consider this a good name candidate, so we have to take into account pronunciation when intersecting name lists.
 
 The problem can thus be broken down into:
 
