@@ -1,6 +1,6 @@
 var MIN_DISPLAY_RANK = 0;
 var CARET = ' <span class="caret" />';
-var DEFAULT_SELECTED_COUNTRIES = ['us', 'in', 'si']
+var DEFAULT_SELECTED_COUNTRIES = ['us', 'in']
 var names = {};
 var all_countries = {};
 
