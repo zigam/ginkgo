@@ -62,7 +62,7 @@ Note that while Double Metaphone takes into account spelling differences in some
 
 ## Ranking
 
-Finally, we rank the results.  We weigh the results by popularity in their countries and separate exact matches from phonetic matches.  Ranking matters, but our goal is also to produce as many good candidates as possible in hopes of finding *the one*.
+Finally, we rank the results.  We weigh the results by popularity in their countries and separate exact matches from phonetic matches.  Ranking matters, but our goal is also to produce as many good candidates as possible in hopes of finding *the one* (recall over precision).
 
 
 <kbd>
@@ -92,3 +92,6 @@ The most common short name is Vietnamese **My**.
 Last but not least: both of our children were successfully named with the help of this tool!
 Give it a try: https://zigam.github.io/ginkgo/
 
+&nbsp;
+
+_By Ziga Mahkovec & Surabhi Gupta_
