@@ -1,4 +1,4 @@
-# An algorithm for naming babies
+# An Algorithm for Naming Babies
 Give it a try: https://zigam.github.io/ginkgo/
 
 When my wife and I were expecting our first child, we faced a daunting task: naming our baby in a way that works across all of our cultures.  My wife was born in India, I was born in Slovenia, and our baby was about to be born in the US (which is where we live).  We wanted the baby’s name to be pronounceable and familiar across all of these countries, while also passing the [Starbucks spelling test](https://www.thrillist.com/drink/nation/starbucks-spelling-tumblr-23-hilariously-misspelled-names-on-starbucks-coffee-cups).  Turns out naming is hard, not just in computer science.
